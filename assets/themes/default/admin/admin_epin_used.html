@@ -1,0 +1,68 @@
+<div class="divLeft"> #_total#: <font color="#FF0000">{$total|format_number}</font> </div>
+<div class="right">
+  <form method="post" action="epin.php?do=used">
+<input type="hidden" name="sd" id="starttime" value="{$sd}">
+	<input type="hidden" name="ed" id="endtime" value="{$ed}"> 
+
+    <div class="inline">
+      <div class="input-group">
+        <div class="input-group-prepend"> <span class="input-group-text"> <i class="fa fa-code"></i></span></div>
+        <input type="text" name="q" value="{$query}" class="form-control" style="width:150px;" autocomplete="off" placeholder="#_epin_code#">
+        <select class="custom-select" size="1" name="package" onchange="this.form.submit()" style="width:100px;">{$membership_package}</select>  
+      </div>
+    </div>
+    <div class="inline">
+      <div class="input-group">
+        <div class="input-group-prepend"> <span class="input-group-text"> <i class="far fa-calendar-alt"></i></span></div>
+        <input type="text" value="{$ranges}" class="form-control" id="statdaterange" style="width:170px;" autocomplete="off" placeholder="#_epin_use_date#">
+        <div class="input-group-append">
+          <button type="submit" class="btn btn-default"> <i class="fas fa-search"></i></button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<form method="POST" action="epin.php?do=delete">
+  <table width="100%" class="tablist table table-hover">
+    <tr>
+      <td class="tablisthead" align="center" width="100">#</td>
+      <td class="tablisthead">#_created_date#</td>
+      <td class="tablisthead">#_epin_code#</td>
+      <td class="tablisthead">#_epin_expired_date#</td>
+      <td class="tablisthead">#_epin_order_by#</td>
+      <td class="tablisthead">#_ordered_date#</td>
+      <td class="tablisthead">#_epin_use_by#</td>
+      <td class="tablisthead">#_epin_use_date#</td>
+      {if $config.separate_wallet}{/if} </tr>
+    {$content} {if $pagenum || $content}
+    <tr class="tablistbutton">
+      <td colspan="8"><div class="row">
+  <div class="col-sm-6"> {if $pagenum}
+    <div class="float-right" >
+      <ul class="pagination justify-content-center">
+        {$pagenum}
+      </ul>
+    </div>
+    {/if} </div>
+  <div class="tbutton col-sm-6 pl-3">
+    <div class="button checkbut btn btn-info" onclick="doCheck(this);"><i class="far fa-check-square"></i> <span>#_button_check_all#</span></div>
+    <button type="submit" class="btn btn-danger" onclick="return confirm('#_str_confirm#');"><i class="far fa-trash-alt"></i> #_button_delete#</button>
+  </div>
+</div>
+</td>
+    </tr>
+    {/if}
+  </table>
+</form>
+<script type="text/javascript">
+
+{literal}
+
+	$(document).ready(function() {
+
+        JT_init();
+
+    });  
+
+</script> 
+{/literal} 

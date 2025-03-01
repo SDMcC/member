@@ -1,0 +1,38 @@
+<form method="post" action="contact.php?do=automail&job=reset">
+	<table class="tablist table table-hover" width="100%">
+		<tr>
+			<td class="tablisthead" align="center" width="100">#</td>
+			<td class="tablisthead" width="300">#_account# </td>
+			<td class="tablisthead">#_received_messages#</td>
+			<td class="tablisthead" align="center" width="150"></td>
+		</tr>
+		{$content} {if $pagenum || $content} <tr class="tablistbutton">
+			<td colspan="7">
+            
+            
+<div class="row"> 
+          <div class="col-sm-6">
+              {if $pagenum}
+            <div class="float-right" >
+              <ul class="pagination justify-content-center">
+                {$pagenum}
+              </ul>
+            </div>
+                {/if}
+          </div>
+        
+          <div class="tbutton col-sm-6 pl-3">
+            <div class="button checkbut btn btn-info" onclick="doCheck(this);"><i class="far fa-check-square"></i> <span>#_button_check_all#</span></div>
+            <button type="submit" class="btn btn-danger" onclick="return confirm('#_str_confirm#');"><i class="far fa-trash-alt"></i> #_button_reset#</button>
+          </div>
+        </div>
+            
+
+                
+                
+                
+                
+			</td>
+		</tr>
+		{/if} </table>
+</form>

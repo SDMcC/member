@@ -1,0 +1,45 @@
+#_total#: <font color="#FF0000">{$total|format_number}</font> <a href="management.php?do=faqs&job=editFaq&cid={$cid}" class="egAdd">#_add_question#</a>
+
+{if $content} 
+<form method="post" action="management.php?do=faqs&job=delFaq&cid={$cid}">
+      {foreach from=$content key=k item=v}
+<div class="card">
+  <div class="card-header bg-info">
+    <h5 class="card-title">
+    <input type="checkbox" name="del[]" value="{$v.id}" class="check" />
+    {$v.caption}
+    </h3>
+    <div class="card-tools">
+      <button type="button" class="btn btn-tool" data-card-widget="collapse"> <i class="fas fa-minus"></i></button>
+    </div>
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body pt-2"> {getMaxChars($v.message, 2000)} </div>
+  <div class="card-footer">
+    <div class="row">
+      <div class="col-md-7">
+
+      </div>
+      <div class="col-md-5">
+        <div class="text-right "> <a href="management.php?do=faqs&job=editFaq&id={$v.id}" class="btn btn-sm btn-primary text-white"> <i class="fas fa-edit text-sm"></i> #_str_edit# </a> </div>
+      </div>
+    </div>
+  </div>
+</div>
+{/foreach}
+<div class="row">
+  <div class="col-sm-6"> {if $pagenum}
+    <div class="float-right" >
+      <ul class="pagination justify-content-center">
+        {$pagenum}
+      </ul>
+    </div>
+    {/if} </div>
+  <div class="tbutton col-sm-6 text-right pr-3">
+    <div class="button checkbut btn btn-info" onclick="doCheck(this);"><i class="far fa-check-square"></i> <span>#_button_check_all#</span></div>
+    <button type="submit" class="btn btn-danger" onclick="return confirm('#_str_confirm#');"><i class="far fa-trash-alt"></i> #_button_delete#</button>
+  </div>
+</div>
+</form>
+    
+{/if} 

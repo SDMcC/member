@@ -1,0 +1,736 @@
+<form method="post" action="">
+		<table width="100%" class="tablist table table-hover">
+			<tbody>
+			<tr>
+				<td class="tablisthead" width="150">
+				<img border="0" src="../assets/images/h-bg.png" width="10" height="11" /> 
+				#_members#</td>
+				<td class="tablisthead" align="center" width="150">#_admin_master#</td>
+				<td class="tablisthead" align="center" width="150">#_admin_super#</td>
+				<td class="tablisthead" align="center" width="150">#_admin_general#</td>
+			</tr>
+			<tr>
+				<td align="right" valign="top">#_member_profile#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="member_profile[sa]" value="1" {if $access.member_profile.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="member_profile[ga]" value="1" {if $access.member_profile.ga}checked{/if} /></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top">#_str_member_upgrade#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="member_activate[sa]" value="1" {if $access.member_activate.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="member_activate[ga]" value="1" {if $access.member_activate.ga}checked{/if} /></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top">#_str_member_downgrade#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="member_deactivate[sa]" value="1" {if $access.member_deactivate.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="member_deactivate[ga]" value="1" {if $access.member_deactivate.ga}checked{/if} /></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top">#_str_member_delete#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="member_delete[sa]" value="1" {if $access.member_delete.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="member_delete[ga]" value="1" {if $access.member_delete.ga}checked{/if} /></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top">#_member_balance#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="member_balance[sa]" value="1" {if $access.member_balance.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="member_balance[ga]" value="1" {if $access.member_balance.ga}checked{/if} /></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top">#_point#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="member_point[sa]" value="1" {if $access.member_point.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="member_point[ga]" value="1" {if $access.member_point.ga}checked{/if} /></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top">#_member_add#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="member_add[sa]" value="1" {if $access.member_add.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="member_add[ga]" value="1" {if $access.member_add.ga}checked{/if} /></td>
+			</tr>
+			
+			<tr>
+				<td align="right" valign="top">#_document_verification#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="member_verification[sa]" value="1" {if $access.member_verification.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="member_verification[ga]" value="1" {if $access.member_verification.ga}checked{/if} /></td>
+			</tr>
+			
+			<tr>
+				<td align="right" valign="top">#_member_export#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="member_export[sa]" value="1" {if $access.member_export.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="member_export[ga]" value="1" {if $access.member_export.ga}checked{/if} /></td>
+			</tr>
+			
+
+
+			
+<tr>
+				<td align="right" valign="top">#_feature_setting#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="orders_config[sa]" value="1" {if $access.orders_config.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="orders_config[ga]" value="1" {if $access.orders_config.ga}checked{/if} /></td>
+			</tr>
+			
+
+
+			<tr>
+				<td valign="top" colspan="4" class="tablisthead">
+				 <img border="0" src="../assets/images/h-bg.png" width="10" height="11" /> 
+				 #_product#</td>
+			</tr>
+                
+			<tr>
+				<td align="right" valign="top">#_downloads#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="manage_downloads[sa]" value="1" {if $access.manage_downloads.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="manage_downloads[ga]" value="1" {if $access.manage_downloads.ga}checked{/if} /></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top">#_str_article#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="manage_articles[sa]" value="1" {if $access.manage_articles.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="manage_articles[ga]" value="1" {if $access.manage_articles.ga}checked{/if} /></td>
+			</tr>
+			
+			<tr>
+				<td valign="top" colspan="4" class="tablisthead">
+				 <img border="0" src="../assets/images/h-bg.png" width="10" height="11" /> 
+				 #_epin#</td>
+			</tr>
+
+			<tr>
+				<td align="right" valign="top">#_pin_edit#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="epin_edit[sa]" value="1" {if $access.epin_edit.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="epin_edit[ga]" value="1" {if $access.epin_edit.ga}checked{/if} /></td>
+			</tr>
+
+			<tr>
+				<td align="right" valign="top">#_pin_create#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="epin_create[sa]" value="1" {if $access.epin_create.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="epin_create[ga]" value="1" {if $access.epin_create.ga}checked{/if} /></td>
+			</tr>
+
+
+
+			<tr>
+				<td valign="top" colspan="4" class="tablisthead">
+				 <img border="0" src="../assets/images/h-bg.png" width="10" height="11" /> 
+				 #_gift#</td>
+			</tr>
+			<tr>
+				<td align="right" valign="top">#_reward_pool#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+                <input type="checkbox" name="gift_pool[sa]" value="1" {if $access.gift_pool.sa}checked{/if} /></td>
+				<td align="center">
+                <input type="checkbox" name="gift_pool[ga]" value="1" {if $access.gift_pool.ga}checked{/if} /></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top">#_reward_rank#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+                <input type="checkbox" name="gift_rank[sa]" value="1" {if $access.gift_rank.sa}checked{/if} /></td>
+				<td align="center">
+                <input type="checkbox" name="gift_rank[ga]" value="1" {if $access.gift_rank.ga}checked{/if} /></td>
+			</tr>
+
+			<tr>
+				<td colspan="4" class="tablisthead">
+				<img border="0" src="../assets/images/h-bg.png" width="10" height="11" /> 
+				#_withdrawal#</td>
+			</tr>
+			<tr>
+				<td align="right" valign="top">#_withdrawal_pay#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="withdraw_pay[sa]" value="1" {if $access.withdraw_pay.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="withdraw_pay[ga]" value="1" {if $access.withdraw_pay.ga}checked{/if} /></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top">#_str_delete#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="withdraw_delete[sa]" value="1" {if $access.withdraw_delete.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="withdraw_delete[ga]" value="1" {if $access.withdraw_delete.ga}checked{/if} /></td>
+			</tr>
+			
+			<tr>
+				<td align="right" valign="top">#_withdrawal_add#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="withdraw_add[sa]" value="1" {if $access.withdraw_add.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="withdraw_add[ga]" value="1" {if $access.withdraw_add.ga}checked{/if} /></td>
+			</tr>
+			
+			<tr>
+				<td align="right" valign="top">#_withdrawal_account#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="withdraw_account[sa]" value="1" {if $access.withdraw_account.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="withdraw_account[ga]" value="1" {if $access.withdraw_account.ga}checked{/if} /></td>
+			</tr>
+                
+                
+			<tr>
+				<td colspan="4" class="tablisthead">
+				<img border="0" src="../assets/images/h-bg.png" width="10" height="11" /> 
+				#_payments#</td>
+			</tr>
+			<tr>
+				<td align="right" valign="top">#_payment_paid#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="payment_paid[sa]" value="1" {if $access.payment_paid.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="payment_paid[ga]" value="1" {if $access.payment_paid.ga}checked{/if} /></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top">#_payment_unpaid#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="payment_unpaid[sa]" value="1" {if $access.payment_unpaid.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="payment_unpaid[ga]" value="1" {if $access.payment_unpaid.ga}checked{/if} /></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top">#_str_delete#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+                <input type="checkbox" name="payment_delete[sa]" value="1" {if $access.payment_delete.sa}checked{/if} /></td>
+				<td align="center">
+                <input type="checkbox" name="payment_delete[ga]" value="1" {if $access.payment_delete.ga}checked{/if} /></td>
+			</tr>
+			
+			
+			<tr>
+				<td align="right" valign="top">#_payment_add#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+                <input type="checkbox" name="payment_add[sa]" value="1" {if $access.payment_add.sa}checked{/if} /></td>
+				<td align="center">
+                <input type="checkbox" name="payment_add[ga]" value="1" {if $access.payment_add.ga}checked{/if} /></td>
+			</tr>
+
+
+			<tr>
+				<td colspan="4" class="tablisthead">
+				 <img border="0" src="../assets/images/h-bg.png" width="10" height="11" /> 
+				 #_contacts#</td>
+			</tr>
+			<tr>
+				<td align="right" valign="top">#_email_send#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="mail_send[sa]" value="1" {if $access.mail_send.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="mail_send[ga]" value="1" {if $access.mail_send.ga}checked{/if} /></td>
+			</tr>
+                
+			<tr>
+				<td align="right" valign="top">#_whatsapp_send#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="whatsapp_send[sa]" value="1" {if $access.whatsapp_send.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="whatsapp_send[ga]" value="1" {if $access.whatsapp_send.ga}checked{/if} /></td>
+			</tr>
+                
+                
+			<tr>
+				<td align="right" valign="top">#_email_automail#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="mail_automail[sa]" value="1" {if $access.mail_automail.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="mail_automail[ga]" value="1" {if $access.mail_automail.ga}checked{/if} /></td>
+			</tr>
+			<tr>
+				<td valign="top" colspan="4" class="tablisthead">
+				 <img border="0" src="../assets/images/h-bg.png" width="10" height="11" /> #_ticket#</td>
+			</tr>
+			<tr>
+				<td align="right" valign="top">#_edit_ticket#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="ticket_edit[sa]" value="1" {if $access.ticket_edit.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="ticket_edit[ga]" value="1" {if $access.ticket_edit.ga}checked{/if} /></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top">#_reply_ticket#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="ticket_reply[sa]" value="1" {if $access.ticket_reply.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="ticket_reply[ga]" value="1" {if $access.ticket_reply.ga}checked{/if} /></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top">#_feature_setting#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="ticket_config[sa]" value="1" {if $access.ticket_config.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="ticket_config[ga]" value="1" {if $access.ticket_config.ga}checked{/if} /></td>
+			</tr>
+			<tr>
+				<td valign="top" colspan="4" class="tablisthead">
+				 <img border="0" src="../assets/images/h-bg.png" width="10" height="11" /> 
+				 #_management#</td>
+			</tr>
+			<tr>
+				<td align="right" valign="top">#_news#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="manage_news[sa]" value="1" {if $access.manage_news.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="manage_news[ga]" value="1" {if $access.manage_news.ga}checked{/if} /></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top">#_testimonial#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="manage_testimonies[sa]" value="1" {if $access.manage_testimonies.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="manage_testimonies[ga]" value="1" {if $access.manage_testimonies.ga}checked{/if} /></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top">#_faqs#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="manage_faqs[sa]" value="1" {if $access.manage_faqs.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="manage_faqs[ga]" value="1" {if $access.manage_faqs.ga}checked{/if} /></td>
+			</tr>
+
+			<tr>
+				<td align="right" valign="top">#_ref_banners#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="manage_banners[sa]" value="1" {if $access.manage_banners.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="manage_banners[ga]" value="1" {if $access.manage_banners.ga}checked{/if} /></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top">#_landing_pages#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="manage_pages[sa]" value="1" {if $access.manage_pages.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="manage_pages[ga]" value="1" {if $access.manage_pages.ga}checked{/if} /></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top">#_str_content#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="manage_content[sa]" value="1" {if $access.manage_content.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="manage_content[ga]" value="1" {if $access.manage_content.ga}checked{/if} /></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top">#_str_backup#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="manage_backup[sa]" value="1" {if $access.manage_backup.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="manage_backup[ga]" value="1" {if $access.manage_backup.ga}checked{/if} /></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top">#_str_report#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="manage_report[sa]" value="1" {if $access.manage_report.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="manage_report[ga]" value="1" {if $access.manage_report.ga}checked{/if} /></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top">#_str_automation#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="manage_cron[sa]" value="1" {if $access.manage_cron.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="manage_cron[ga]" value="1" {if $access.manage_cron.ga}checked{/if} /></td>
+			</tr>
+			<tr>
+				<td valign="top" colspan="4" class="tablisthead">
+				 <img border="0" src="../assets/images/h-bg.png" width="10" height="11" /> 
+					#_config#</td>
+			</tr>
+			<tr>
+				<td align="right" valign="top">#_config_general#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="config_general[sa]" value="1" {if $access.config_general.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="config_general[ga]" value="1" {if $access.config_general.ga}checked{/if} /></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top">#_config_membership#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="config_membership[sa]" value="1" {if $access.config_membership.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="config_membership[ga]" value="1" {if $access.config_membership.ga}checked{/if} /></td>
+			</tr>
+			
+			<tr>
+				<td align="right" valign="top">#_config_packages#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="config_packages[sa]" value="1" {if $access.config_packages.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="config_packages[ga]" value="1" {if $access.config_packages.ga}checked{/if} /></td>
+			</tr>
+			
+			<tr>
+				<td align="right" valign="top">#_config_network#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="config_commission[sa]" value="1" {if $access.config_commission.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="config_commission[ga]" value="1" {if $access.config_commission.ga}checked{/if} /></td>
+			</tr>
+
+                
+                
+			<tr>
+				<td align="right" valign="top">#_config_mail#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="config_email[sa]" value="1" {if $access.config_email.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="config_email[ga]" value="1" {if $access.config_email.ga}checked{/if} /></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top">#_config_language#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="config_language[sa]" value="1" {if $access.config_language.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="config_language[ga]" value="1" {if $access.config_language.ga}checked{/if} /></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top">#_config_payment#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="config_payment[sa]" value="1" {if $access.config_payment.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="config_payment[ga]" value="1" {if $access.config_payment.ga}checked{/if} /></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top">#_config_withdrawal#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="config_withdrawal[sa]" value="1" {if $access.config_withdrawal.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="config_withdrawal[ga]" value="1" {if $access.config_withdrawal.ga}checked{/if} /></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top">#_config_fields#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="config_register[sa]" value="1" {if $access.config_register.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="config_register[ga]" value="1" {if $access.config_register.ga}checked{/if} /></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top">#_config_member_fields#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="config_fields[sa]" value="1" {if $access.config_fields.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="config_fields[ga]" value="1" {if $access.config_fields.ga}checked{/if} /></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top">#_config_misc#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="config_misc[sa]" value="1" {if $access.config_misc.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="config_misc[ga]" value="1" {if $access.config_misc.ga}checked{/if} /></td>
+			</tr>
+			<tr>
+				<td valign="top" colspan="4" class="tablisthead">
+				 <img border="0" src="../assets/images/h-bg.png" width="10" height="11" /> 
+				 #_plugin#</td>
+			</tr>
+			<tr>
+				<td align="right" valign="top">#_plugin_frontpage#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="plugin_frontpage[sa]" value="1" {if $access.plugin_frontpage.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="plugin_frontpage[ga]" value="1" {if $access.plugin_frontpage.ga}checked{/if} /></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top">#_plugin_ban#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="plugin_ban[sa]" value="1" {if $access.plugin_ban.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="plugin_ban[ga]" value="1" {if $access.plugin_ban.ga}checked{/if} /></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top">#_plugin_photo#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="plugin_photo[sa]" value="1" {if $access.plugin_photo.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="plugin_photo[ga]" value="1" {if $access.plugin_photo.ga}checked{/if} /></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top">#_str_viralpdf#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="plugin_pdf[sa]" value="1" {if $access.plugin_pdf.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="plugin_pdf[ga]" value="1" {if $access.plugin_pdf.ga}checked{/if} /></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top">#_plugin_im#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="plugin_im[sa]" value="1" {if $access.plugin_im.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="plugin_im[ga]" value="1" {if $access.plugin_im.ga}checked{/if} /></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top">#_plugin_captcha#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="plugin_captcha[sa]" value="1" {if $access.plugin_captcha.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="plugin_captcha[ga]" value="1" {if $access.plugin_captcha.ga}checked{/if} /></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top">#_plugin_bruteforce#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="plugin_bruteforce[sa]" value="1" {if $access.plugin_bruteforce.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="plugin_bruteforce[ga]" value="1" {if $access.plugin_bruteforce.ga}checked{/if} /></td>
+			</tr>
+			<tr>
+				<td valign="top" colspan="4" class="tablisthead">
+				 <img border="0" src="../assets/images/h-bg.png" width="10" height="11" /> 
+				 #_admin#</td>
+			</tr>
+			<tr>
+				<td align="right" valign="top" class="formsubject">#_admin_profile#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="admin_profile[sa]" value="1" {if $access.admin_profile.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="admin_profile[ga]" value="1" {if $access.admin_profile.ga}checked{/if} /></td>
+			</tr>
+                
+			<tr>
+				<td align="right" valign="top" class="formsubject">#_admin_reminder#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="admin_reminder[sa]" value="1" {if $access.admin_reminder.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="admin_reminder[ga]" value="1" {if $access.admin_reminder.ga}checked{/if} /></td>
+			</tr>
+                
+                
+			<tr>
+				<td align="right" valign="top" class="formsubject">#_admin_add#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="admin_add[sa]" value="1" {if $access.admin_add.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="admin_add[ga]" value="1" {if $access.admin_add.ga}checked{/if} /></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top" class="formsubject">#_admin_access#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="admin_access[sa]" value="1" {if $access.admin_access.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="admin_access[ga]" value="1" {if $access.admin_access.ga}checked{/if} /></td>
+			</tr>
+			<tr>
+				<td valign="top" colspan="4" class="tablisthead">
+				 <img border="0" src="../assets/images/h-bg.png" width="10" height="11" /> 
+				 #_log#</td>
+			</tr>
+			<tr>
+				<td align="right" valign="top" class="formsubject">#_log_earning#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="logs_commission[sa]" value="1" {if $access.logs_commission.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="logs_commission[ga]" value="1" {if $access.logs_commission.ga}checked{/if} /></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top" class="formsubject">#_log_payout#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="logs_payout[sa]" value="1" {if $access.logs_payout.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="logs_payout[ga]" value="1" {if $access.logs_payout.ga}checked{/if} /></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top" class="formsubject">#_log_payment#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="logs_payments[sa]" value="1" {if $access.logs_payments.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="logs_payments[ga]" value="1" {if $access.logs_payments.ga}checked{/if} /></td>
+			</tr>
+
+			<tr>
+				<td align="right" valign="top" class="formsubject">#_log_transfer#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="logs_transfer[sa]" value="1" {if $access.logs_transfer.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="logs_transfer[ga]" value="1" {if $access.logs_transfer.ga}checked{/if} /></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top" class="formsubject">#_log_access#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="logs_access[sa]" value="1" {if $access.logs_access.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="logs_access[ga]" value="1" {if $access.logs_access.ga}checked{/if} /></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top" class="formsubject">#_log_stats#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="logs_stats[sa]" value="1" {if $access.logs_stats.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="logs_stats[ga]" value="1" {if $access.logs_stats.ga}checked{/if} /></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top" class="formsubject">#_log_error#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="logs_error[sa]" value="1" {if $access.logs_error.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="logs_error[ga]" value="1" {if $access.logs_error.ga}checked{/if} /></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top" class="formsubject">#_cron_task#</td>
+				<td align="center">
+				<img border="0" src="../assets/images/enable.png" /></td>
+				<td align="center">
+				<input type="checkbox" name="logs_cron[sa]" value="1" {if $access.logs_cron.sa}checked{/if} /></td>
+				<td align="center">
+				<input type="checkbox" name="logs_cron[ga]" value="1" {if $access.logs_cron.ga}checked{/if} /></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top" colspan="4" class="tablistbutton">
+				<button type="submit" class="btn btn-primary"><i class="far fa-save"></i> #_button_save#</button></td>
+			</tr>
+		</tbody>
+		</table>
+</form>

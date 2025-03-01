@@ -1,0 +1,35 @@
+	<form method="POST" id="dataForm" action="epin.php?do=create">
+		<table border="0" cellpadding="0" width="100%" class="config">
+			<tbody>
+
+			<tr>
+				<td align="right" class="formsubject">#_epin_prefix#:</td>
+				<td width="315">
+				<input type="text" name="epin_prefix" value="{$config.epin_prefix}" class="required egFieldTips" title="#_epin_prefix_desc#" size="25" /></td>
+			</tr>
+			<tr>
+				<td align="right" class="formsubject">#_epin_length#:</td>
+				<td width="315">
+				<input type="text" name="epin_length" value="{$config.epin_length}" class="required egFieldTips" title="#_epin_length_desc#" size="25" /></td>
+			</tr>
+			<tr>
+				<td align="right" class="formsubject">#_amount#:</td>
+				<td width="315">
+				<input type="text" name="amount" id="p_amount" value="{$config.epin_amount}" class="required egFieldTips" title="#_epin_amount_desc#" size="25" /></td>
+			</tr>
+			
+			<tr>
+				<td align="right" class="formsubject">#_enrollment_package#:</td>
+				<td width="315">
+						<select size="1" name="membership_package">{$membership_package}</select></td>
+			</tr>
+			<tr>
+				<td align="right" width="315">&nbsp;</td>
+				<td width="315">
+				<button type="submit" class="btn btn-primary" onclick="return confirm('#_str_confirm#');"><i class="far fa-save"></i> #_button_create#</button>
+				
+				</td>
+			</tr>
+		</tbody>
+		</table>
+</form>

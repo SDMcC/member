@@ -1,0 +1,76 @@
+<div class="row">
+  <div class="col-sm-12 col-md-6">
+    <p>#_total#: <font color="#FF0000">{$total|format_number}</font>&nbsp; <a href="epin.php?do=packages&job=edit" class="egAdd">#_add_package#</a></p>
+  </div>
+  <div class="col-sm-12 col-md-6"> {if $pagenum}
+    <div class="float-right" id="example2_paginate">
+      <ul class="pagination">
+        {$pagenum}
+      </ul>
+    </div>
+    {/if} </div>
+</div>
+{if $packages}
+	{foreach from=$packages key=k item=v}
+<div class="card packageList">
+  <div class="card-header bg-olive">
+    <h3 class="card-title "><span class="name"><i class="fas fa-box-open text-sm"></i> <a href="epin.php?do=packages&job=edit&id={$v.package_id}" class="text-white">{$v.package_name}</a></span> </h3>
+    <div class="card-tools"> <a class="btn btn-sm text-white btn-secondary" href="epin.php?do=packages&job=del&id={$v.package_id}" onClick="return confirm('#_str_confirm#');" ><i class="fas fa-trash-alt text-sm"></i> #_str_delete#</a>
+
+  </div>
+</div>
+<!-- /.card-header -->
+<div class="card-body pt-2 "> {if $v.pic}
+  <div class=" pr-2 float-left">
+    <div class="pic"><a class="cboxElement" href= "{$v.pic|upload_img_url}"><img border="0" src="{$v.pic|upload_img_url}" /></a></div>
+  </div>
+  {/if}
+  {$v.description|eg_get_html} </div>
+<div class="card-footer">
+  <div class="row">
+    <div class="col-md-9">
+      <div class="row ">
+        <div class="col-md-2 col-12 p-0"><span class=" product-detail-list">#_order_cost#: {$cur}{$v.cost|format_money}</span></div>
+        <div class="col-md-2 col-12 p-0"><span class=" product-detail-list">#_quantity#: {$v.quantity|format_money}</span></div>
+        <div class="col-md-3 col-12 p-0"><span class=" product-detail-list">#_membership_limit#: {$v.userlevel|get_membership_name}</span></div>
+        <div class="col-md-3 col-12 p-0"><span class=" product-detail-list">#_enrollment_package#: {$v.membership_package|enrollment_name}</span></div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="text-right"> <a href="epin.php?do=packages&job=edit&id={$v.package_id}" class="btn btn-sm btn-primary text-white"> <i class="fas fa-edit text-sm"></i> #_str_edit# </a> </div>
+    </div>
+  </div>
+</div>
+</div>
+{/foreach}{else}#_error_package_notfound#{/if}
+	
+{if $pagenum}
+<ul class="pagination justify-content-center">
+  {$pagenum}
+</ul>
+{/if}
+</div>
+<div id="tabCreate" style="display:none;">
+<form method="POST" id="dataForm" action="epin.php?do=config&job=pins">
+  <table border="0" cellpadding="0" width="100%" class="config">
+    <tbody>
+      <tr>
+        <td align="right" class="formsubject">#_epin_prefix#:</td>
+        <td width="315"><input type="text" name="epin_prefix" value="{$config.epin_prefix}" class="required egFieldTips" title="#_epin_prefix_desc#" size="25" /></td>
+      </tr>
+      <tr>
+        <td align="right" class="formsubject">#_epin_length#:</td>
+        <td width="315"><input type="text" name="epin_length" value="{$config.epin_length}" class="required egFieldTips" title="#_epin_length_desc#" size="25" /></td>
+      </tr>
+      <tr>
+        <td align="right" class="formsubject">#_amount#:</td>
+        <td width="315"><input type="text" name="amount" id="p_amount" value="{$config.epin_amount}" class="required egFieldTips" title="#_epin_amount_desc#" size="25" /></td>
+      </tr>
+      <tr>
+        <td align="right" width="315">&nbsp;</td>
+        <td width="315"><button type="submit" class="btn btn-primary" onclick="return confirm('#_str_confirm#');"><i class="far fa-save"></i> #_button_save#</button>
+          <input type="button" class="btn btn-secondary buttonCancel" value="#_button_cancel#"  name="join" onclick="HideMe('#BoxPinEdit');" /></td>
+      </tr>
+    </tbody>
+  </table>
+</form>

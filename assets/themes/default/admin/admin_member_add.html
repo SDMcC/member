@@ -1,0 +1,185 @@
+<form method="post" action="members.php?do=add" id="dataForm">
+  <div class="errormsg"> {$msg}</div>
+  <table border="0" cellpadding="2" class="config">
+    <tbody>
+
+      <tr>
+        <td align="right">#_enrollment_package#:</td>
+        <td><select size="1" name="membership_package">
+            {$membership_package}
+          </select></td>
+      </tr>
+    {if $config.epin_registration}
+    <tr>
+      <td align="right"> #_epin#:</td>
+      <td><input type="text" name="epin" size="19" value="{$reg.epin}" {if $config.epin_registration == 1}class="required egFieldTips" title="#_error_epin_empty#"{/if} /></td>
+    </tr>
+    {/if}
+    <tr>
+      <td align="right" class="formsubject"></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="right" class="formsubject"> #_username#:</td>
+      <td><input type="text" size="19" value="{$reg.loginid}" name="loginid" class="required" id="loginid" />
+        <span id="usernameResult"></span></td>
+    </tr>
+    <tr>
+      <td align="right" class="formsubject"> #_password#:</td>
+      <td><input type="password" size="19" name="password" class="required" id="newpw" />
+        <div id="strengthBar"></div></td>
+    </tr>
+    <tr>
+      <td align="right" class="formsubject"> #_repassword#:</td>
+      <td><input type="password" size="19" name="password2" class="required" /></td>
+    </tr>
+    <tr>
+      <td align="right" class="formsubject"></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="right" class="formsubject"> #_firstname#:</td>
+      <td><input type="text" name="name_f" size="19" value="{$reg.name_f}" class="required" /></td>
+    </tr>
+    {if $req.last_name.show}
+    <tr>
+      <td align="right" class="formsubject"> #_lastname#:</td>
+      <td><input type="text" name="name_l" size="19" value="{$reg.name_l}" {if $req.last_name.required}class="required"{/if} /></td>
+    </tr>
+    {/if} {if $req.birthday.show}
+    <tr>
+      <td align="right" class="formsubject"> #_birthday#:</td>
+      <td><select size="1" name="bday[day]">
+          {$days}
+        </select>
+        <select size="1" name="bday[month]">
+          {$months}
+        </select>
+        &nbsp;
+        <input type="text" name="bday[year]" size="4" maxlength="4" value="{$byear}" {if $req.birthday.required}class="required"{/if} /></td>
+    </tr>
+    {/if}{if $req.gender.show}
+    <tr>
+      <td align="right" class="formsubject"> #_gender#:</td>
+      <td><select size="1" name="gender">
+          {$gender_option}
+			
+        </select></td>
+    </tr>
+    {/if}
+    <tr>
+      <td align="right" class="formsubject"> #_email#:</td>
+      <td><input type="text" name="email" size="24" value="{$reg.email}" class="required" /></td>
+    </tr>
+    {if $req.mphone.show}
+    <tr>
+      <td align="right"> #_mobile_phone# 
+        :</td>
+      <td> {html_options name=mphone_ccode options=$country_codes selected=$reg.mphone_ccode class="country_codes {if $req.mphone.required}required{/if}"} 
+        
+        <!--			<input type="text" name="mphone_ccode" size="24" value="{$reg.mphone_ccode}" {if $req.mphone.required}class="required egFieldTips" title="#_error_countrycode_empty#"{/if} style="width: 50px;" />-->
+        
+        <input type="text" name="mphone" size="24" value="{$reg.mphone}" {if $req.mphone.required}class="required egFieldTips" title="#_error_mphone_empty#"{/if} style="width: 190px;" /></td>
+    </tr>
+    {/if}
+    {if $req.phone.show}
+    <tr>
+      <td align="right"> #_phone# 
+        :</td>
+      <td> {html_options name=phone_ccode options=$country_codes selected=$reg.phone_ccode class="country_codes {if $req.phone.required}required{/if}"} 
+        
+        <!--			<input type="text" name="phone_ccode" size="24" value="{$reg.phone_ccode}" {if $req.phone.required}class="required egFieldTips" title="#_error_countrycode_empty#"{/if} style="width: 50px;" />-->
+        
+        <input type="text" name="phone" size="24" value="{$reg.phone}" {if $req.phone.required}class="required egFieldTips" title="#_error_phone_empty#"{/if} style="width: 190px;" /></td>
+    </tr>
+    {/if}
+    {if $req.address.show}
+    <tr>
+      <td align="right" valign="top" class="formsubject"> #_address#:</td>
+      <td><textarea rows="4" name="address" cols="42" {if $req.address.required}class="required"{/if}>{$reg.address}</textarea></td>
+    </tr>
+    {/if}{if $req.city.show}
+    <tr>
+      <td align="right" class="formsubject"> #_city#:</td>
+      <td><input type="text" size="24" name="city" value="{$reg.city}" {if $req.city.required}class="required"{/if} /></td>
+    </tr>
+    {/if}{if $req.state.show}
+    <tr>
+      <td align="right" class="formsubject"> #_state#:</td>
+      <td><input type="text" size="24" name="state" value="{$reg.state}" {if $req.state.required}class="required"{/if} /></td>
+    </tr>
+    {/if}{if $req.zip.show}
+    <tr>
+      <td align="right" class="formsubject"> #_zipcode#:</td>
+      <td><input type="text" size="10" name="zip" value="{$reg.zip}" {if $req.zip.required}class="required"{/if} /></td>
+    </tr>
+    {/if}{if $req.country.show}
+    <tr>
+      <td align="right" class="formsubject"> #_country#:</td>
+      <td> {html_options name=country options=$country_names selected=$reg.country class=" {if $req.country.required}required{/if}"} 
+        
+        <!--			<input type="text" size="24" name="country" value="{$reg.country}" {if $req.country.required}class="required"{/if} />--></td>
+    </tr>
+    {/if}
+    <tr>
+      <td align="right" class="formsubject">#_language#:</td>
+      <td><select size="1" name="lang">
+          {$language}
+        </select></td>
+    </tr>
+    {if $additional_fields_html}
+    {$additional_fields_html}{/if}
+    {if $req.wd.show}
+    <tr>
+      <td valign="top" colspan="2" class="confighead">#_withdraw_info#</td>
+    </tr>
+    <tr>
+      <td align="right" valign="top">#_payment_gateway#:</td>
+      <td valign="bottom"><select size="1" name="wd_to">
+          {$wd_to}
+        </select></td>
+    </tr>
+    <tr>
+      <td align="right" valign="top">#_payment_gateway_acc#:</td>
+      <td valign="bottom"><input type="text" name="wd_acc" size="24" value="{$reg.wd_acc}" {if $req.wd.required}class="required"{/if} /></td>
+    </tr>
+    <tr>
+      <td align="right" valign="top">#_payment_gateway_holder#:</td>
+      <td valign="bottom"><input type="text" name="wd_name" size="24" value="{$reg.wd_name}" {if $req.wd.required}class="required"{/if} /></td>
+    </tr>
+    {/if}
+    <tr>
+      <td align="right"></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="confighead">#_sponsor#</td>
+    </tr>
+    <tr>
+      <td align="right">#_sponsor#:</td>
+      <td><input type="text" name="sponsor" size="20" value="{$reg.sponsor}" /></td>
+    </tr>
+    <tr>
+      <td align="right"></td>
+      <td><input type="checkbox" name="mail" value="ON" />
+        #_send_a_registration_email_to_member#</td>
+    </tr>
+    <tr>
+      <td align="right"></td>
+      <td><button type="submit" class="btn btn-primary"><i class="fa fa-user-plus"></i> #_button_register#</button>
+        <div class="buttonCancel">
+          <button type="button" class="btn btn-secondary buttonCancel" name="btncancel" onclick="history.back(-1)"><i class="fas fa-undo text-sm"></i> #_button_cancel#</button>
+        </div></td>
+    </tr>
+    </tbody>
+    
+  </table>
+  <input type="hidden" name="cek" value="ON" />
+</form>
+{literal} 
+<script type="text/javascript">
+$(document).ready(function () {
+$('#loginid').keyup(username_check);
+});
+</script> 
+{/literal}

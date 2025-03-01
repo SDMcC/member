@@ -1,0 +1,54 @@
+<div class="divLeft">
+#_total_balance#: <font color="#FF0000">{$cur}{$total_balance|format_money}&nbsp;&nbsp;&nbsp; </font>{if $config.point_system}#_total_point#: <font color="#FF0000">{$total_point|format_number}</font>{/if}</div>
+<div class="right">
+  <form method="post" action="">
+    <div class="inline">
+      <div class="input-group">
+        <div class="input-group-prepend"> <span class="input-group-text"> <i class="fas fa-user"></i></span></div>
+        <input type="text" name="q" value="{$q}" class="form-control" style="width:170px;" autocomplete="off" placeholder="#_username#">
+        <div class="input-group-append">
+          <button type="submit" class="btn btn-default"> <i class="fas fa-search"></i></button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<table class="tablist table table-hover" width="100%">
+  <tr>
+    <td class="tablisthead" align="center" width="100">#</td>
+    <td class="tablisthead">#_account# </td>
+    <td class="tablisthead">#_balance#</td>
+    <td class="tablisthead">#_point#</td>
+    <td class="tablisthead" align="center" width="100">#_status#</td>
+  </tr>
+  {$content} 
+  
+  
+  {if $pagenum }
+  <tr class="tablistbutton">
+    <td colspan="9"><div class="row">
+        <div class="col-sm-6"> {if $pagenum}
+          <div class="float-right" >
+            <ul class="pagination justify-content-center">
+              {$pagenum}
+            </ul>
+          </div>
+          {/if} </div>
+      </div></td>
+  </tr>
+  {/if}
+</table>
+<div align="center">
+  <table border="0" cellpadding="0" style="border-collapse: collapse">
+    <tr>
+      <td class="pr-3"><div class="indicatorImg memberPaid" title="#_member_paid#"></div>
+        : #_member_paid#</td>
+      <td class="pr-3"><div class="indicatorImg memberFree" title="#_member_free#"></div>
+        : #_member_free#</td>
+      <td class="pr-3"><div class="indicatorImg memberExpired" title="'._member_expired.'"></div>
+        : #_member_expired#</td>
+      <td class="pr-3"><div class="indicatorImg memberDisabled" title="#_member_disabled#"></div>
+        : #_member_disabled#</td>
+    </tr>
+  </table>
+</div>

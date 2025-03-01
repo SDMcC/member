@@ -1,0 +1,64 @@
+<div class="divLeft"> #_total#: <font color="#FF0000"> {$total_member|format_number}</font></div>
+<div class="right">
+  <form method="post" action="">
+    <div class="inline">
+        
+      <div class="input-group">
+        <div class="input-group-prepend"> <span class="input-group-text"> <i class="fas fa-user"></i></span></div>
+        <input type="text" name="q" value="{$q}" class="form-control" style="width:170px;" autocomplete="off" placeholder="#_username#">
+          
+        <select class="custom-select" name="f" onchange="this.form.submit()" style="width:100px;">
+         {$filter}
+        </select>
+          
+        <div class="input-group-append">
+          <button type="submit" class="btn btn-default"> <i class="fas fa-search"></i></button>
+        </div>
+      </div>
+        
+
+    </div>
+  </form>
+</div>
+<form method="post" action="members.php?do=massdelete">
+  <table class="tablist table table-hover" width="100%">
+    <tr>
+      <td class="tablisthead" align="center" width="120">#</td>
+      <td class="tablisthead" width="220">#_date#</td>
+      <td class="tablisthead">#_account#</td>
+      <td class="tablisthead">#_rank#</td>
+      <td class="tablisthead" align="center" width="150">#_status#</td>
+    </tr>
+    {$content} 
+    
+    
+    {if $pagenum }
+    <tr class="tablistbutton">
+      <td colspan="9"><div class="row">
+          <div class="col-sm-6"> {if $pagenum}
+            <div class="float-right" >
+              <ul class="pagination justify-content-center">
+                {$pagenum}
+              </ul>
+            </div>
+            {/if} </div>
+        </div></td>
+    </tr>
+    {/if}
+  </table>
+  <input type="hidden" name="do" value="delete" />
+</form>
+<div align="center">
+  <table border="0" cellpadding="0" style="border-collapse: collapse">
+    <tr>
+      <td class="pr-3"><div class="indicatorImg memberPaid" title="#_member_paid#"></div>
+        : #_member_paid#</td>
+      <td class="pr-3"><div class="indicatorImg memberFree" title="#_member_free#"></div>
+        : #_member_free#</td>
+      <td class="pr-3"><div class="indicatorImg memberExpired" title="'._member_expired.'"></div>
+        : #_member_expired#</td>
+      <td class="pr-3"><div class="indicatorImg memberDisabled" title="#_member_disabled#"></div>
+        : #_member_disabled#</td>
+    </tr>
+  </table>
+</div>

@@ -1,0 +1,37 @@
+{if $menus}
+<form method="post" action="">
+  <div class="tabButton">
+    <button type="submit" class="btn btn-primary"><i class="far fa-save"></i> #_button_save#</button>
+  </div>
+  <table cellspacing="0" width="100%" class="tablist table table-hover">
+    <tbody>
+      <tr>
+        <td class="tablisthead" align="center" width="100">#</td>
+        <td class="tablisthead">#_bookmark_text#</td>
+        <td class="tablisthead">#_bookmark_url#</td>
+        <td class="tablisthead">#_sort_order#</td>
+      </tr>
+    {$number = 0 }  
+    {foreach from=$menus key=k item=v}
+    {$number = $number+ 1}
+    <tr>
+      <td align="center" width="70"><input type="checkbox" name="del[]" value="{$k}" class="check" />
+        {$number}</td>
+      <td><input type="text" name="text[{$k}]" size="10" value="{$v.text}" /></td>
+      <td><input type="text" name="url[{$k}]" size="10" value="{$v.url}" /></td>
+      <td><input type="text" name="pos[{$k}]" size="10" value="{$k}" style="width:80px;" /></td>
+    </tr>
+    {/foreach}
+    <tr class="tablistbutton">
+      <td colspan="4"><div class="tbutton">
+          <div class="button checkbut btn btn-info" onclick="doCheck(this);"><i class="far fa-check-square"></i> <span>#_button_check_all#</span></div>
+          <button type="submit" class="btn btn-danger" onclick="return confirm('#_str_confirm#');"><i class="far fa-trash-alt"></i> #_button_delete#</button>
+        </div></td>
+    </tr>
+      </tbody>
+    
+  </table>
+</form>
+{else}
+#_bookmark_na#
+{/if} 

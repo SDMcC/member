@@ -1,0 +1,95 @@
+{if $msg} 
+<div class="errormsg">
+	{$msg}</div>
+{/if}
+<form method="post" action="epin.php?do=packages&job=edit&id={$p.package_id}" id="dataForm" enctype="multipart/form-data">
+<div class="uitabs">
+
+<div class="tabButton">
+				<button type="submit" class="btn btn-primary"><i class="far fa-save"></i> #_button_save#</button> 
+				<button type="button" class="btn btn-secondary buttonCancel" name="btncancel" onclick="history.back(-1)"><i class="fas fa-undo text-sm"></i> #_button_cancel#</button></div>
+	<ul>
+		<li><a href="#tabGeneral">#_config_general#</a></li>
+		{if $poolbonus}	<li><a href="#tabBonus">#_reward_pool#</a> </li>{/if}
+	</ul>
+	
+<div id="tabGeneral" style="display: block;">
+	<!-- TinyMCE -->{$TinyMCE_Config}
+	<!-- /TinyMCE -->
+		<table border="0" cellspacing="0" cellpadding="0" class="config" width="100%">
+			<tr>
+				<td align="right" valign="top" class="formsubject">#_package_name#:</td>
+				<td><input type="text" name="package_name" size="12" value="{$p.package_name}" class="required egFieldTips" title="#_package_name_desc#" /></td>
+			</tr>
+			
+			<tr>
+				<td align="right" class="formsubject">#_enrollment_package#:</td>
+				<td width="315">
+						<select size="1" name="membership_package">{$membership_package}</select></td>
+			</tr>
+			
+			<tr>
+				<td align="right" valign="top" class="formsubject">#_order_cost# ({$cur}):</td>
+				<td>
+				<input type="text" name="cost" size="12" value="{$p.cost}" class="required egFieldTips" title="#_package_cost_desc#" style="width:150px;" /></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top" class="formsubject">#_quantity#:</td>
+				<td>
+				<input type="text" name="quantity" size="12" value="{$p.quantity}" class="required egFieldTips" title="#_quantity_desc#" style="width:150px;" /></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top" class="formsubject">#_epin_expired_date#:</td>
+				<td>
+				<input type="text" name="expired_date" value="{$p.expired_date}" class="egFieldTips" title="#_epin_expired_desc#" size="12" style="width:150px;" /></td>
+			</tr>
+
+			<tr>
+				<td align="right" class="formsubject">#_description#:</td>
+				<td>
+<textarea rows="4" name="description" cols="44" class="mceEditor" id="msg_edit">{$p.description}</textarea></td>
+			</tr>
+		<tr>
+			<td align="right" valign="top" class="formsubject">#_package_image#:</td>
+			<td valign="top">{if $p.pic}
+                <a target="_blank" href="{$p.pic|upload_img_url}" rel="popup_show"><img class="img-thumb img-circle img-bordered-sm" src={$p.pic|upload_img_url} border="0" /></a>{/if}
+                
+                  <div class="inline">
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="fileimage" name="image" accept="image/*">
+                        <label class="custom-file-label" for="fileimage">#_choose_file#</label>
+                      </div>
+                  </div>
+       </td>
+		</tr>
+			<tr>
+				<td align="right" class="formsubject">#_str_limit#:</td>
+				<td><select size="1" name="userlevel" class="egFieldTips">{$userlevel}</select></td>
+			</tr>
+			<tr>
+				<td align="right" class="formsubject">#_sort_order#:</td>
+				<td> 
+				<input type="text" name="sort_order" size="40" value="{$p.sort_order}" style="width:100px;" class="egFieldTips" title="#_sort_order_desc#" /></td>
+			</tr>
+			</table>
+		</div>
+		
+		{if $poolbonus}<div id="tabBonus" style="display: block;">
+		
+<table border="0" cellpadding="0" style="border-collapse: collapse" width="100%" class="config">
+{foreach from=$poolbonus key=k item=v}
+				<tr>
+					<td class="formsubject">{$v.pool_name} ({$cur}):</td>
+					<td>
+                    <input type="text" name="epin_pools[{$v.pool_id}]" size="30" value="{$epin_pools[$v.pool_id]|floatval}" class="egFieldTips" title="#_epin_pools_desc#" /></td>
+				</tr>
+{/foreach} 
+				
+
+				
+</table>
+		
+		</div>{/if}
+		
+</div>
+	</form>

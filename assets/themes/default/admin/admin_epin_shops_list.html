@@ -1,0 +1,33 @@
+ #_total#: <font color="#FF0000">{$total|format_number}</font>
+<table width="100%" class="tablist table table-hover">
+  <tr>
+    <td class="tablisthead" align="center" width="100">#</td>
+    <td class="tablisthead">#_epin_code#</td>
+    <td class="tablisthead" width="200">#_epin_expired_date#</td>
+  </tr>
+    
+  {$content}
+    
+    
+    
+    {if $pagenum}
+  <tr class="tablistbutton">
+    <td colspan="3">{if $pagenum}
+            <ul class="pagination justify-content-center">
+              {$pagenum}
+            </ul> {/if} </td>
+  </tr>
+  {/if}
+</table>
+<script type="text/javascript">
+{literal}
+	$(document).ready(function() {
+ 
+		$('.code-hidee').hide();
+    	$('.code-hide').click(function(){
+        $(this).next().slideToggle(300);
+        return false;
+    });     
+	});
+</script> 
+{/literal} 

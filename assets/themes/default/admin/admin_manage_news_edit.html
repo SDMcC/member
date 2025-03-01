@@ -1,0 +1,59 @@
+<form method="post" id="dataForm" action="">
+  <div class="errormsg">{$msg}</div>
+  <!-- TinyMCE -->{$TinyMCE_Config} 
+  <!-- /TinyMCE -->
+  <table border="0" class="config" style="border-collapse: collapse" cellpadding="0" width="100%">
+    <tbody>
+      <tr>
+        <td align="right" class="formsubject">#_postdate#:</td>
+        <td>{$date|format_time}</td>
+      </tr>
+      <tr>
+        <td align="right" class="formsubject">#_str_subject#:</td>
+        <td><input type="text" name="subject" size="89" value="{$post.subject}" style="width: 95%;" class="required" /></td>
+      </tr>
+      <tr>
+        <td align="right" valign="top" class="formsubject">#_str_content#:</td>
+        <td valign="top"><textarea rows="21" name="body" cols="44" class="required mceEditor" id="msg_edit">{$post.body}</textarea></td>
+      </tr>
+      <tr>
+        <td align="right" class="formsubject">#_str_limit#:</td>
+        <td><select size="1" name="showto">
+            
+				{$showto}
+				
+          </select></td>
+      </tr>
+    {if $config.multi_language}
+    <tr>
+      <td align="right" class="formsubject">#_language#:</td>
+      <td><select size="1" name="language">
+          
+			{$languages}
+			
+        </select></td>
+    </tr>
+    {/if}
+    <tr>
+      <td align="right" class="formsubject">#_str_enable#:</td>
+      <td><select size="1" name="enabled">
+          
+				{$enable}
+				
+        </select></td>
+    </tr>
+    <tr>
+      <td align="right" class="formsubject">&nbsp;</td>
+      <td><button type="submit" class="btn btn-primary"><i class="far fa-save"></i> #_button_save#</button>
+        <div class="buttonCancel">
+          <button type="button" class="btn btn-secondary buttonCancel" name="btncancel" onclick="history.back(-1)">
+          <i class="fas fa-undo text-sm"></i> #_button_cancel#
+          </button>
+        </div></td>
+    </tr>
+    </tbody>
+    
+  </table>
+  <input type="hidden" name="id" value="{$id}" />
+  <input type="hidden" name="job" value="{$job}" />
+</form>

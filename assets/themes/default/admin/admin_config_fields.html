@@ -1,0 +1,283 @@
+<div class="uitabs">
+  <ul>
+    <li class="active"><a href="#tabRegister">#_config_fields#</a></li>
+    <li><a href="#tabField">#_config_member_fields#</a></li>
+  </ul>
+  <div id="tabRegister" style="display: block;">
+    <form method="post" action="">
+      <table class="config" width="100%">
+        <tbody>
+          <tr>
+            <td align="right" class="formsubject">#_username#:</td>
+            <td>#_required#</td>
+          </tr>
+          <tr>
+            <td align="right" class="formsubject">#_password#:</td>
+            <td>#_required#</td>
+          </tr>
+          <tr>
+            <td align="right" class="formsubject">#_repassword#:</td>
+            <td>#_required#</td>
+          </tr>
+          <tr>
+            <td align="right" class="formsubject">#_firstname#:</td>
+            <td>#_required#
+              <input type="checkbox" name="change_name" value="1" {if $config.reg_fields.name.edit}checked{/if} />
+              #_disallow_changing_name#</td>
+          </tr>
+          <tr>
+            <td align="right" class="formsubject">#_email#:</td>
+            <td>#_required#
+              <input type="checkbox" name="change_email" value="1" {if $config.reg_fields.email.edit}checked{/if} />
+              #_disallow_changing_email#&nbsp;&nbsp;
+              <input type="checkbox" name="duplicate_email" value="1" {if $config.reg_fields.email.duplicate}checked{/if} />
+              #_disallow_duplicate_email#&nbsp; </td>
+          </tr>
+          <tr>
+            <td align="right" class="formsubject">#_mobile_phone#:</td>
+            <td ><div style="float:left;">
+                <select size="1" name="mphone[show]" onchange="egLayer(this.value,'mphone'); return false;">
+                  
+                  {$mphone}
+                
+                </select>
+              </div>
+              <div style="display:none;" id="mphone">&nbsp;
+                <select size="1" name="mphone[required]">
+                  
+                  {$mphone_required}
+                
+                </select>
+                <input type="checkbox" name="change_mphone" value="1" {if $config.reg_fields.mphone.edit}checked{/if} />
+                #_disallow_changing_mphone#&nbsp;&nbsp;
+                <input type="checkbox" name="duplicate_mphone" value="1" {if $config.reg_fields.mphone.duplicate}checked{/if} />
+                #_disallow_duplicate_mphone#</div></td>
+          </tr>
+          <tr>
+            <td align="right" class="formsubject">#_phone#:</td>
+            <td ><div style="float:left;">
+                <select size="1" name="phone[show]" onchange="egLayer(this.value,'phone'); return false;">
+                  
+                  {$phone}
+                
+                </select>
+              </div>
+              <div style="display:none;" id="phone">&nbsp;
+                <select size="1" name="phone[required]">
+                  
+                  {$phone_required}
+                
+                </select>
+              </div></td>
+          </tr>
+          <tr>
+            <td align="right" class="formsubject">#_lastname#:</td>
+            <td ><div style="float:left;">
+                <select size="1" name="last_name[show]" onchange="egLayer(this.value,'last_name'); return false;">
+                  
+                  {$last_name}
+                
+                </select>
+              </div>
+              <div style="display:none;" id="last_name">&nbsp;
+                <select size="1" name="last_name[required]">
+                  
+                  {$last_name_required}
+                
+                </select>
+              </div></td>
+          </tr>
+          <tr>
+            <td align="right" class="formsubject">#_birthday#:</td>
+            <td ><div style="float:left;">
+                <select size="1" name="birthday[show]" onchange="egLayer(this.value,'birthday'); return false;">
+                  
+                  {$birthday}
+                
+                </select>
+              </div>
+              <div style="display:none;" id="birthday">&nbsp;
+                <select size="1" name="birthday[required]">
+                  
+                  {$birthday_required}
+                
+                </select>
+              </div></td>
+          </tr>
+          <tr>
+            <td align="right" class="formsubject">#_gender#:</td>
+            <td ><div style="float:left;">
+                <select size="1" name="gender[show]" onchange="egLayer(this.value,'gender'); return false;">
+                  
+                  {$gender}
+                
+                </select>
+              </div>
+              <div style="display:none;" id="gender">&nbsp;
+                <select size="1" name="gender[required]">
+                  
+                  {$gender_required}
+                
+                </select>
+              </div></td>
+          </tr>
+          <tr>
+            <td align="right" class="formsubject">#_address#:</td>
+            <td ><div style="float:left;">
+                <select size="1" name="address[show]" onchange="egLayer(this.value,'address'); return false;">
+                  
+                  {$address}
+					
+                
+                </select>
+              </div>
+              <div style="display:none;" id="address">&nbsp;
+                <select size="1" name="address[required]">
+                  
+                  {$address_required}
+                
+                </select>
+              </div></td>
+          </tr>
+          <tr>
+            <td align="right" class="formsubject">#_city#:</td>
+            <td ><div style="float:left;">
+                <select size="1" name="city[show]" onchange="egLayer(this.value,'city'); return false;">
+                  
+                  {$city}
+                
+                </select>
+              </div>
+              <div style="display:none;" id="city">&nbsp;
+                <select size="1" name="city[required]">
+                  
+                  {$city_required}
+                
+                </select>
+              </div></td>
+          </tr>
+          <tr>
+            <td align="right" class="formsubject">#_state#:</td>
+            <td ><div style="float:left;">
+                <select size="1" name="state[show]" onchange="egLayer(this.value,'state'); return false;">
+                  
+                  {$state}
+                
+                </select>
+              </div>
+              <div style="display:none;" id="state">&nbsp;
+                <select size="1" name="state[required]">
+                  
+                  {$state_required}
+                
+                </select>
+              </div></td>
+          </tr>
+          <tr>
+            <td align="right" class="formsubject">#_zipcode#:</td>
+            <td><div style="float:left;">
+                <select size="1" name="zip[show]" onchange="egLayer(this.value,'zip'); return false;">
+                  
+                  {$zip}
+                
+                </select>
+              </div>
+              <div style="display:none;" id="zip">&nbsp;
+                <select size="1" name="zip[required]">
+                  
+                  {$zip_required}
+                
+                </select>
+              </div></td>
+          </tr>
+          <tr>
+            <td align="right" class="formsubject">#_country#:</td>
+            <td><div style="float:left;">
+                <select size="1" name="country[show]" onchange="egLayer(this.value,'country'); return false;">
+                  
+                  {$country}
+					
+                
+                </select>
+              </div>
+              <div style="display:none;" id="country">&nbsp;
+                <select size="1" name="country[required]">
+                  
+                  {$country_required}
+                
+                </select>
+              </div></td>
+          </tr>
+          <tr>
+            <td align="right" class="formsubject">#_sponsor#:</td>
+            <td><div style="float:left;">
+                <select size="1" name="sponsor[show]" onchange="egLayer(this.value,'sponsor'); return false;">
+                  
+                  {$sponsor}
+                
+                </select>
+              </div>
+              <div style="display:none;" id="sponsor">&nbsp;
+                <select size="1" name="sponsor[required]">
+                  
+                  {$sponsor_required}
+                
+                </select>
+              </div></td>
+          </tr>
+          <tr>
+            <td align="right" width="0" class="formsubject">&nbsp;</td>
+            <td width="0"><button type="submit" class="btn btn-primary"><i class="far fa-save"></i> #_button_save#</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <script type="text/javascript">
+egLayer({$config.reg_fields.last_name.show},'last_name');
+egLayer({$config.reg_fields.birthday.show},'birthday');
+egLayer({$config.reg_fields.gender.show},'gender');
+egLayer({$config.reg_fields.mphone.show},'mphone');
+egLayer({$config.reg_fields.phone.show},'phone');
+egLayer({$config.reg_fields.address.show},'address');
+egLayer({$config.reg_fields.city.show},'city');
+egLayer({$config.reg_fields.state.show},'state');
+egLayer({$config.reg_fields.country.show},'country');
+egLayer({$config.reg_fields.zip.show},'zip');
+egLayer({$config.reg_fields.sponsor.show|intval},'sponsor');
+</script>
+    </form>
+  </div>
+  <div id="tabField" style="display:none;">
+    <form method="post" action="configuration.php?do=fields&job=reorder">
+      <table border="0" cellpadding="0" style="border-collapse: collapse" width="100%">
+        <tbody>
+          <tr>
+            <td align="right"><button type="button" class="btn btn-info" onclick="window.location='configuration.php?do=fields&job=new'"><i class="fas fa-plus"></i> #_button_add_field#</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <table border="0" class="tablist table table-hover" cellpadding="0" cellspacing="0" width="100%">
+        <tbody>
+          <tr>
+            <td class="tablisthead" align="center" width="100">#</td>
+            <td class="tablisthead">#_field_name#</td>
+            <td class="tablisthead">#_title#</td>
+            <td class="tablisthead">#_sql_type#</td>
+            <td class="tablisthead">#_validation_function#</td>
+            <td class="tablisthead" align="center" width="100">#_order#</td>
+            <td class="tablisthead" align="center" width="100">#_str_edit#</td>
+          </tr>
+        {$content}
+        
+        {if $content}
+        <tr class="tablistbutton">
+          <td colspan="7"><div class="tbutton">
+              <button type="submit" class="btn btn-primary"><i class="fas fa-sort-amount-up-alt"></i> #_button_order_field#</button>
+            </div></td>
+        </tr>
+        {/if}
+        </tbody>
+        
+      </table>
+    </form>
+  </div>
+</div>

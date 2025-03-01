@@ -1,0 +1,109 @@
+<div class="row">
+  <div class="col-lg-8 col-md-12">
+      
+
+
+{literal} 
+<script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart1);
+      function drawChart1() {
+      var jsonData = $.ajax({
+          url: "members.php",
+          type: "POST",
+          data: "action=summary",
+         
+          async: false
+          }).responseText;
+
+
+        var data = new google.visualization.DataTable(jsonData);
+        var options = { 
+        legend: {position: "top"},
+        hAxis: {title: "Dates"},
+        vAxis: {title: "Quantity", format:0},
+        chartArea: {left:30,top:30,width:"95%",height:"70%"}, 
+        seriesType: "bars",
+        series: {4: {type: "line"}}
+        };
+        var chart = new google.visualization.ComboChart(document.getElementById("chartcont1"));
+        chart.draw(data,options);
+      }
+  </script> 
+{/literal}
+<div class="card card-primary">
+  <div class="card-header">
+    <h3 class="card-title">#_members#</h3>
+    <div class="card-tools">
+      <button type="button" class="btn btn-tool" data-card-widget="collapse"> <i class="fas fa-minus"></i></button>
+    </div>
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body p-0">
+    <div id="chartcont1" style="width:100%;height:400px;">
+      <div style="padding-top:140px;text-align:center;"><img src="{$config.root_url}/assets/images/load.gif" /> </div>
+    </div>
+  </div>
+  <!-- /.card-body -->
+  <div class="card-footer text-center"> <a href="members.php?do=list"><i class="fas fa-list"></i> #_member_list#</a> </div>
+  <!-- /.card-footer --></div>
+
+      
+        </div>
+
+  <div class="col-lg-4 col-md-12">
+      
+      
+    {literal} 
+    <script type="text/javascript">
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart2);
+
+      
+      function drawChart2() {
+      var jsonData = $.ajax({
+          url: "members.php",
+          type: "POST",
+          data: "action=memberships",
+          dataType:"json",
+          async: false
+          }).responseText;
+
+        var data = new google.visualization.DataTable(jsonData);
+
+        var options = {
+     
+          pieSliceText: 'value'
+        };
+        
+     var chart = new google.visualization.PieChart(document.getElementById('chartcont2'));
+     chart.draw(data, options);
+      }
+  </script> 
+    {/literal}
+    <div class="card card-primary">
+      <div class="card-header">
+        <h3 class="card-title">#_membership#</h3>
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse"> <i class="fas fa-minus"></i></button>
+        </div>
+      </div>
+      <!-- /.card-header -->
+      <div class="card-body p-0">
+        <div id="chartcont2" style="width:100%;height:400px;">
+          <div style="padding-top:140px;text-align:center;"><img src="{$config.root_url}/assets/images/load.gif" /> </div>
+        </div>
+      </div>
+      <!-- /.card-body -->
+      <div class="card-footer text-center"> <a href="members.php?do=list"><i class="fas fa-list"></i> #_member_list#</a> </div>
+      <!-- /.card-footer --></div>
+      
+      
+        </div>
+</div> 
+      
+
+
+
+
+

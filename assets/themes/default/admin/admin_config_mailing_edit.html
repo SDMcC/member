@@ -1,0 +1,80 @@
+<form method="post" name="dataForm" id="dataForm" action="">
+  <!-- TinyMCE --> 
+  {$TinyMCE_Config} 
+  <!-- /TinyMCE -->
+  
+  <div class="errormsg"> {$error}</div>
+  <table border="0" width="100%" class="config">
+    <tr>
+      <td class="confighead" colspan="2">{$notification}</td>
+    </tr>
+    <tr>
+      <td align="right" class="formsubject">#_str_email_type#:</td>
+      <td><select size="1" name="html" onchange="change_editor_type(this.value); return false;">
+          
+          {$html_op}
+        
+        </select></td>
+    </tr>
+    <tr>
+      <td align="right" class="formsubject">#_str_enable#:</td>
+      <td><select size="1" name="enable">
+          
+          {$enable}
+        
+        </select></td>
+    </tr>
+    <tr>
+      <td align="right" class="formsubject">#_str_subject#:</td>
+      <td><input type="text" name="subject" size="80" value="{$nl.subject}" style="width: 95%" class="required" onfocus="edit_focused(this)" ></td>
+    </tr>
+    <tr>
+      <td align="right" valign="top" class="formsubject">#_str_message#:</td>
+      <td><textarea rows="30" name="msg" cols="10" id="msg_edit" style="width: 95%" class="msg" onfocus="edit_focused(this)">{$nl.msg}</textarea></td>
+    </tr>
+
+      
+    <tr>
+      <td align="right" valign="top">&nbsp;</td>
+      <td><button type="submit" class="btn btn-primary"><i class="far fa-save"></i> #_button_save#</button>
+        <div class="buttonCancel">
+          <button type="button" class="btn btn-secondary buttonCancel" name="btncancel" onclick="window.location='configuration.php?do=mailing#tabEmail'" />
+          <i class="fas fa-undo text-sm"></i> #_button_cancel#
+          </button>
+        </div></td>
+    </tr>
+    <tr>
+      <td align="right" valign="top">&nbsp;</td>
+      <td><div class="card card-info card-outline mt-5 personal-tags" style="max-width: 800px;">
+          <div class="card-header">
+            <h3 class="card-title">#_str_personal_tags#</h3>
+          </div>
+          <div class="card-body"> {literal}
+            <div class="row">
+              <div class="col-4"> <a href="javascript:;" onmousedown="insert_tag('{$member.refid}');" title="Member's referral Id">{$member.refid}</a> <a href="javascript:;" onmousedown="insert_tag('{$member.name}');" title="Member's full name">{$member.name}</a> <a href="javascript:;" onmousedown="insert_tag('{$member.email}');" title="Member's email address">{$member.email}</a> <a href="javascript:;" onmousedown="insert_tag('{$member.phone}');" title="Member's phone number">{$member.phone}</a> <a href="javascript:;" onmousedown="insert_tag('{$member.status}');" title="Member's userlevel (Paid/Free)">{$member.status}</a> </div>
+              <div class="col-4"> <a href="javascript:;" onmousedown="insert_tag('{$member.address}');" title="Member's street address">{$member.address} </a> <a href="javascript:;" onmousedown="insert_tag('{$member.city}');" title="Member's city">{$member.city}</a> <a href="javascript:;" onmousedown="insert_tag('{$member.state}');" title="Member's state">{$member.state}</a> <a href="javascript:;" onmousedown="insert_tag('{$member.zip}');" title="Member's postal address">{$member.zip}</a> <a href="javascript:;" onmousedown="insert_tag('{$member.country_name}');" title="Member's country">{$member.country}</a> </div>
+              <div class="col-4"> <a href="javascript:;" onMouseDown="insert_tag('{$member.package_name}');" title="Member's membership package">{$member.package_name}</a> <a href="javascript:;" onmousedown="insert_tag('{$member.balance}');" title="Member's balance">{$member.balance}</a> <a href="javascript:;" onmousedown="insert_tag('{$member.date_join}');" title="Member's join date">{$member.date_join}</a> <a href="javascript:;" onmousedown="insert_tag('{$member.date_active}');" title="Member's activation date">{$member.date_active}</a> <a href="javascript:;" onmousedown="insert_tag('{$member.date_expire}');" title="Membership expiry date">{$member.date_expire}</a> </div>
+            </div>
+            {/literal}
+            
+            
+            {if $custom_field}
+            <div class="row">
+              <p class="border-bottom mt-3"><b>#_str_custom_field#</b></p>
+              {foreach from=$custom_field key=k item=v name=foo}
+              <div style="padding-left: 10px;width: 150px;float:left; display:inline;"> <a href="javascript:;" onmousedown="insert_tag('{literal}{$member.{/literal}{$v.name}{literal}}{/literal}');" title="{$v.description}"> {$v.name}</a></div>
+              {/foreach} </div>
+            {/if} </div>
+        </div></td>
+    </tr>
+  </table>
+
+</form>
+
+
+  <script type="text/javascript">
+var ishtml = {$ishtml};
+{literal}
+change_editor_type(ishtml);
+</script> 
+  {/literal}

@@ -1,0 +1,221 @@
+<form method="post" action="" id="dataForm">
+  <div class="uitabs">
+  <div class="tabButton">
+    <button type="submit" class="btn btn-primary"><i class="far fa-save"></i> #_button_save#</button>
+  </div>
+  <ul>
+    <li><a href="#tabCron">#_cron_task#</a></li>
+    <li><a href="#tabAutomation">#_str_automation#</a></li>
+    <li><a href="#tabLogs">#_log#</a></li>
+  </ul>
+  <div id="tabCron" style="display:block;"> {if $msg}
+    <div class="errormsg"> {$msg}</div>
+    {/if}
+    <table border="0" cellspacing="0" cellpadding="0" class="config" width="100%">
+
+      <tr>
+        <td align="right" class="formsubject">#_cron_pool_task#:</td>
+        <td><input type="text" name="interval[pool]" size="20" style="width:80px;" value="{$cron.pool}" class="egFieldTips" title="#_cron_pool_desc#">
+          <select size="1" name="unit[pool]">
+            {$crontask_pool}
+          </select></td>
+      </tr>
+      <tr>
+        <td align="right" class="formsubject">#_cron_withdrawal#:</td>
+        <td><input type="text" name="interval[withdrawal]" size="20" style="width:80px;" value="{$cron.withdrawal}" class="egFieldTips" title="#_cron_withdrawal_desc#">
+          <select size="1" name="unit[withdrawal]">
+            {$crontask_withdrawal}
+          </select></td>
+      </tr>
+      <tr>
+        <td align="right" class="formsubject">#_cron_mail_queue#:</td>
+        <td><input type="text" name="interval[mail_queue]" size="20" style="width:80px;" value="{$cron.mail_queue}" class="egFieldTips" title="#_cron_mail_queue_desc#">
+          <select size="1" name="unit[mail_queue]">
+            {$crontask_mail_queue}
+          </select></td>
+      </tr>
+        
+      <tr>
+        <td align="right" class="formsubject">#_cron_reminder#:</td>
+        <td><input type="text" name="interval[reminder]" size="20" style="width:80px;" value="{$cron.reminder}" class="egFieldTips" title="#_cron_reminder_desc#">
+          <select size="1" name="unit[reminder]">
+            {$crontask_reminder}
+          </select></td>
+      </tr>
+        
+      <tr>
+        <td align="right" class="formsubject">#_cron_automail#:</td>
+        <td><input type="text" name="interval[automail]" size="20" style="width:80px;" value="{$cron.automail}" class="egFieldTips" title="#_cron_automail_desc#">
+          <select size="1" name="unit[automail]">
+            {$crontask_automail}
+          </select></td>
+      </tr>
+      <tr>
+        <td align="right" class="formsubject">#_cron_expire#:</td>
+        <td><input type="text" name="interval[expire]" size="20" style="width:80px;" value="{$cron.expire}" class="egFieldTips" title="#_cron_expire_desc#">
+          <select size="1" name="unit[expire]">
+            {$crontask_expire}
+          </select></td>
+      </tr>
+      <tr>
+        <td align="right" class="formsubject">#_cron_pending_payment#:</td>
+        <td><input type="text" name="interval[payment]" size="20" style="width:80px;" value="{$cron.payment}" class="egFieldTips" title="#_cron_pending_payment_desc#">
+          <select size="1" name="unit[payment]">
+            {$crontask_pending_payment}
+          </select></td>
+      </tr>
+      <tr>
+        <td align="right" class="formsubject">#_cron_stats#:</td>
+        <td><input type="text" name="interval[stats]" size="20" style="width:80px;" value="{$cron.stats}" class="egFieldTips" title="#_cron_stats_desc#">
+          <select size="1" name="unit[stats]">
+            {$crontask_stats}
+          </select></td>
+      </tr>
+      <tr>
+        <td align="right" class="formsubject">#_cron_free_members#:</td>
+        <td><input type="text" name="interval[free_members]" size="20" style="width:80px;" value="{$cron.free_members}"  class="egFieldTips" title="#_cron_free_members_desc#">
+          <select size="1" name="unit[free_members]">
+            {$crontask_free_members}
+          </select></td>
+      </tr>
+      {if egFeatures::feature_enabled('shares')}
+      <tr>
+        <td align="right" class="formsubject">#_cron_investment#:</td>
+        <td><input type="text" name="interval[investment]" size="20" style="width:80px;" value="{$cron.investment}" class="egFieldTips" title="#_cron_investment_desc#">
+          <select size="1" name="unit[investment]">
+            {$crontask_investment}
+          </select></td>
+      </tr>
+      {/if}
+      {if egFeatures::feature_enabled('traffic')}
+      <tr>
+        <td align="right" class="formsubject">#_cron_traffic_ads#:</td>
+        <td><input type="text" name="interval[traffic_ads]" size="20" style="width:80px;" value="{$cron.traffic_ads}" class="egFieldTips" title="#_cron_traffic_ads_desc#">
+          <select size="1" name="unit[traffic_ads]">
+            {$crontask_traffic_ads}
+          </select></td>
+      </tr>
+      {/if}
+      
+      {if egFeatures::feature_enabled('ads')}
+      <tr>
+        <td align="right" class="formsubject">#_cron_ads#:</td>
+        <td><input type="text" name="interval[ads]" size="20" style="width:80px;" value="{$cron.ads}"  class="egFieldTips" title="#_cron_ads_desc#">
+          <select size="1" name="unit[ads]">
+            {$crontask_ads}
+          </select></td>
+      </tr>
+      {/if}
+    </table>
+    <p align="left">&nbsp;</p>
+    <p align="left"><br />
+      #_line4#: <b>{$config.root_url}/cron.php</b> #_on_the_web_server#</p>
+    <p align="left">#_line3#</p>
+    <p align="left">&nbsp;</p>
+    <p align="left">#_line5#:</p>
+    <pre>    curl --silent {$config.root_url}/cron.php</pre>
+    <pre>    /usr/bin/php {$DOCSPATH}cron.php</pre>
+    <pre>    /usr/bin/curl {$config.root_url}/cron.php</pre>
+    <pre>    /usr/bin/wget {$config.root_url}/cron.php</pre>
+    <p align="left">&nbsp;</p>
+    <p align="left">#_line6#</p>
+    <p align="left">&nbsp;</p>
+  </div>
+  <div id="tabAutomation" style="display: none;">
+    <table border="0" cellspacing="0" cellpadding="0" class="config" width="100%">
+      {if $egMember->expdays}
+      <tr>
+        <td align="right" class="formsubject">#_cron_membership_expiration#:</td>
+        <td><select size="1" name="cron_expire">
+            {$cron_expire}
+          </select>
+          #_time_remaining#:
+          <input type="text" name="cron_expire_days" size="1" value="{$config.cron_expire_days}" style="width:100px;" />
+          #_day#</td>
+      </tr>
+      {/if}
+      <tr>
+        <td align="right" class="formsubject">#_cron_delete_pending_payment#:</td>
+        <td><select size="1" name="cron_pending">
+            {$cron_pending}
+          </select>
+          #_log_last_days#:
+          <input type="text" name="cron_pending_days" size="1" value="{$config.cron_pending_days}" style="width:100px;" />
+          #_day#</td>
+      </tr>
+      <tr>
+        <td align="right" class="formsubject">#_cron_reset_web_stats#:</td>
+        <td><select size="1" name="cron_stats">
+            {$cron_stats}
+          </select>
+          #_log_last_days#:
+          <input type="text" name="cron_stats_days" size="1" value="{$config.cron_stats_days}" style="width:100px;" />
+          #_day#</td>
+      </tr>
+      <tr>
+        <td align="right" class="formsubject">#_cron_send_auto_email#:</td>
+        <td><select size="1" name="cron_automail">
+            {$cron_automail}
+          </select></td>
+      </tr>
+      <tr>
+        <td align="right" class="formsubject">#_cron_send_email_queue#:</td>
+        <td><select size="1" name="cron_mailqueue">
+            {$cron_mailqueue}
+          </select></td>
+      </tr>
+    </table>
+  </div>
+  <div id="tabLogs" style="display: none;">
+    <table border="0" cellspacing="0" cellpadding="0" class="config" width="100%">
+      <tr>
+        <td align="right" class="formsubject">#_log_statistic#: </td>
+        <td><select size="1" name="log_stats">
+            {$log_stats}
+          </select>
+          <input type="checkbox" name="reset_stats" value="ON" />
+          #_log_reset#</td>
+      </tr>
+      <tr>
+        <td align="right" class="formsubject">#_log_members_access#:</td>
+        <td><select size="1" name="log_access">
+            {$log_access}
+          </select>
+          <input type="checkbox" name="reset_access" value="ON" />
+          #_log_reset#</td>
+      </tr>
+      <tr>
+        <td align="right" class="formsubject">#_log_admins_access#:</td>
+        <td><select size="1" name="log_admin">
+            {$log_admin}
+          </select>
+          <input type="checkbox" name="reset_admin" value="ON" />
+          #_log_reset#</td>
+      </tr>
+      <tr>
+        <td align="right" class="formsubject">#_log__error#:</td>
+        <td><select size="1" name="log_error">
+            {$log_error}
+          </select>
+          <input type="checkbox" name="reset_error" value="ON" />
+          #_log_reset#</td>
+      </tr>
+      <tr>
+        <td align="right" class="formsubject">#_log_pool_balance#:</td>
+        <td><select size="1" name="log_pool_balance" >
+            {$log_pool_balance}
+          </select>
+          <input type="checkbox" name="reset_pool" value="ON" />
+          #_log_reset#</td>
+      </tr>
+      <tr>
+        <td align="right" class="formsubject">#_log_account_activity#:</td>
+        <td><select size="1" name="log_account_activity" class="egFieldTips" title="#_log_account_activity_desc#">
+            {$log_account_activity}
+          </select>
+          <input type="checkbox" name="reset_activity" value="ON" />
+          #_log_reset#</td>
+      </tr>
+    </table>
+  </div>
+</form>

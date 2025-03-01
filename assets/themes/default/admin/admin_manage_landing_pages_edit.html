@@ -1,0 +1,114 @@
+<form method="post" id="dataForm" action="">
+  <!-- TinyMCE -->{$TinyMCE_Config} 
+  <!-- /TinyMCE --> 
+
+  <table border="0" class="config" cellpadding="0" width="100%">
+    <tbody>
+      <tr>
+        <td align="right" valign="top" class="formsubject"> #_page_id#:</td>
+        <td><input type="text" name="page_id" size="40" value="{$p.page_id}" class="required" /></td>
+      </tr>
+      <tr>
+        <td align="right" valign="top" class="formsubject"> #_page_name#:</td>
+        <td><input type="text" name="page_name" size="40" value="{$p.page_name}" class="required" /></td>
+      </tr>
+      <tr>
+        <td align="right" valign="top" class="formsubject"> #_page_content#:</td>
+        <td valign="top">
+            <textarea rows="16" name="page_content" cols="65" class="mceEditor required">{$p.page_content}</textarea></td>
+      </tr>
+      <tr>
+        <td align="right" valign="top" class="formsubject"> #_page_desc#:</td>
+        <td valign="top"><input type="text" name="page_desc" size="40" value="{$p.page_desc}" class="required" style="width:75%" /></td>
+      </tr>
+      <tr>
+        <td align="right" valign="top" class="formsubject"> #_show_members#:</td>
+        <td valign="top"><select size="1" name="member_show">
+            {$member_show}
+          </select></td>
+      </tr>
+      <tr>
+        <td align="right" valign="top" class="formsubject">#_str_enable#:</td>
+        <td valign="top"><select size="1" name="enabled">
+            {$enabled}
+          </select></td>
+      </tr>
+      <tr>
+        <td align="right" valign="top" class="formsubject">&nbsp;</td>
+        <td valign="top"><button type="submit" class="btn btn-primary"><i class="far fa-save"></i> #_button_save#</button>
+          <div class="buttonCancel">
+            <button type="button" class="btn btn-secondary buttonCancel" name="btncancel" onclick="history.back(-1)">
+            <i class="fas fa-undo text-sm"></i> #_button_cancel#
+            </button>
+          </div></td>
+      </tr>
+      <tr>
+        <td align="right" valign="top" class="formsubject">&nbsp;</td>
+        <td valign="top">&nbsp;</td>
+      </tr>
+
+      <tr>
+        <td align="right" valign="top" class="formsubject">&nbsp;</td>
+        <td valign="top">
+            
+<div class="card card-info card-outline mt-2 personal-tags" style="max-width: 800px;">
+              
+  <div class="card-header">
+    <h3 class="card-title">#_str_personal_tags#</h3>
+  </div>
+              
+<div class="card-body">
+
+
+    {literal}
+    <div class="row">
+    
+    <div class="col-4">
+        <a href="javascript:;" onmousedown="insert_tag('{$sponsor.refid}');" title="Sponsor's referral Id">{$sponsor.refid}</a>
+        <a href="javascript:;" onmousedown="insert_tag('{$sponsor.name}');" title="Sponsor's full name">{$sponsor.name}</a>
+        <a href="javascript:;" onmousedown="insert_tag('{$sponsor.email}');" title="Sponsor's email address">{$sponsor.email}</a>
+        <a href="javascript:;" onmousedown="insert_tag('{$sponsor.phone}');" title="Sponsor's phone number">{$sponsor.phone}</a>
+        <a href="javascript:;" onmousedown="insert_tag('{$sponsor.status}');" title="Sponsor's userlevel (Paid/Free)">{$sponsor.status}</a>
+        </div>
+     <div class="col-4">
+      <a href="javascript:;" onmousedown="insert_tag('{$sponsor.address}');" title="Sponsor's street address">{$sponsor.address}  </a>
+        <a href="javascript:;" onmousedown="insert_tag('{$sponsor.city}');" title="Sponsor's city">{$sponsor.city}</a>
+         <a href="javascript:;" onmousedown="insert_tag('{$sponsor.state}');" title="Sponsor's state">{$sponsor.state}</a>
+         <a href="javascript:;" onmousedown="insert_tag('{$sponsor.zip}');" title="Sponsor's postal address">{$sponsor.zip}</a>
+         <a href="javascript:;" onmousedown="insert_tag('{$sponsor.country_name}');" title="Sponsor's country">{$sponsor.country}</a>
+        </div>
+     <div class="col-4">
+        <a href="javascript:;" onMouseDown="insert_tag('{$sponsor.package_name}');" title="Sponsor's Sponsorship package">{$sponsor.package_name}</a> 
+        <a href="javascript:;" onmousedown="insert_tag('{$sponsor.balance}');" title="Sponsor's balance">{$sponsor.balance}</a>
+         <a href="javascript:;" onmousedown="insert_tag('{$sponsor.date_join}');" title="Sponsor's join date">{$sponsor.date_join}</a>
+         <a href="javascript:;" onmousedown="insert_tag('{$sponsor.date_active}');" title="Sponsor's activation date">{$sponsor.date_active}</a>
+         <a href="javascript:;" onmousedown="insert_tag('{$sponsor.date_expire}');" title="Sponsor's expiry date">{$sponsor.date_expire}</a>
+        
+        </div>   
+    
+    
+    </div>
+{/literal}
+    
+        
+        {if $custom_field}
+  <div class="row">
+        <p class="border-bottom mt-3"><b>#_str_custom_field#</b></p>
+        {foreach from=$custom_field key=k item=v name=foo}
+        <div style="padding-left: 10px;width: 150px;float:left; display:inline;"> <a href="javascript:;" onmousedown="insert_tag('{literal}{$sponsor.{/literal}{$v.name}{literal}}{/literal}');" title="{$v.description}"> {$v.name}</a></div>
+        {/foreach}
+   </div>
+        {/if} 
+    
+    
+    
+</div>
+</div>
+          
+          
+          </td>
+      </tr>
+    </tbody>
+  </table>
+  <input type="hidden" name="id" value="{$p.id}" />
+</form>

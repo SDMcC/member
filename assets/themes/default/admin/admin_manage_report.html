@@ -1,0 +1,31 @@
+<form name="exports" method="post" action="">
+  <div align="center" class="errormsg"> {$msg}</div>
+  <table border="0" cellspacing="0" cellpadding="0" class="config">
+    <tr>
+      <td align="right" valign="top">#_show_report#:</td>
+      <td valign="top"><select name="report" size="1">
+          {$report_option}
+						
+        </select></td>
+    </tr>
+    <tr>
+      <td align="right" valign="top">#_start_date#:</td>
+      <td valign="top">{html_select_date time=$beg_date prefix="range_start" start_year="-5"}</td>
+    </tr>
+    <tr>
+      <td align="right" valign="top">#_end_date#:</td>
+      <td valign="top">{html_select_date time=$end_date prefix="range_end" start_year="-5"} </td>
+    </tr>
+    <tr>
+      <td align="right" valign="top">#_discretion#:</td>
+      <td valign="top"><select name="discretion" size="1">
+          {html_options options=$discretion_options selected=$discretion}
+						
+        </select></td>
+    </tr>
+    <tr>
+      <td align="right" valign="top">&nbsp;</td>
+      <td valign="top"><button type="submit" class="btn btn-primary"><i class="fas fa-th-list"></i> #_button_show#</button></td>
+    </tr>
+  </table>
+</form>

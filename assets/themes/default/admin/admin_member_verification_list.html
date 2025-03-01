@@ -1,0 +1,149 @@
+
+
+
+
+<div class="right">
+	<form method="post" action="members.php?do=verification&job={$job}" id="listVM{$job}">
+        <div class="inline">
+      <div class="input-group">
+        <div class="input-group-prepend"> <span class="input-group-text"> <i class="far fa-user"></i></span></div>
+        <input type="text" value="{$query}" name="q" class="form-control" style="width:200px;" placeholder="#_search#" autocomplete="off" >
+        <div class="input-group-append">
+          <button type="submit" class="btn btn-default"> <i class="fas fa-search"></i></button>
+        </div>
+      </div>
+    </div>
+</form>
+		
+
+</div>
+<form method="post" action="members.php?do=verification&job=Del{$job}" id="Del{$job}">
+	<table class="tablist table table-hover" width="100%">
+		<tr>
+			<td class="tablisthead" align="center" width="100">#</td>
+			<td class="tablisthead">#_account#</td>
+			<td class="tablisthead"><span class="egFieldTips" title="{$config.document_file1}">#_document_file1#</span> </td>
+			<td class="tablisthead"><span class="egFieldTips" title="{$config.document_file2}">#_document_file2#</span></td>
+			<td class="tablisthead">&nbsp;</td>
+		</tr>
+		{$content}
+			{if $pagenum || $content}
+			<tr class="tablistbutton">
+				<td colspan="8">
+                    
+                    
+<div class="row"> 
+          <div class="col-sm-6">
+              {if $pagenum}
+            <div class="float-right" >
+              <ul class="pagination justify-content-center">
+                {$pagenum}
+              </ul>
+            </div>
+                {/if}
+          </div>
+        
+          <div class="tbutton col-sm-6 pl-3">
+                    <div class="button checkbut btn btn-info" onclick="doCheck(this,'Del{$job}');"><i class="far fa-check-square"></i> <span>#_button_check_all#</span></div>
+					<button type="submit" class="btn btn-danger" onclick="return confirm('#_str_confirm#');"><i class="far fa-trash-alt"></i> #_button_delete#</button>
+          </div>
+        </div>
+                    
+
+				 </td>
+			</tr>
+			{/if}
+		</table>
+<input type="hidden" name="do" value="delete" />
+</form>
+
+
+<script type="text/javascript">
+var thejob = "{$job}";
+var msg = '#_confirm_document_delete#';
+var msg_setVerified = '#_confirm_status_verified#';
+var msg_setunVerified = '#_confirm_status_unverified#';
+
+{literal}
+
+function setunVerified(uid){
+    if (confirm(msg_setunVerified)) {
+        $.blockUI({ message: '' }); 
+        $.ajax({
+            type: 'GET',
+            url:  'members.php?do=verification&job=set_unverified&id='+uid,
+            success: function (response) {
+                setTimeout($.unblockUI, 1000);
+                ReloadTab('.uitabs');
+            }
+        });
+    }
+};
+
+
+function setVerified(uid){
+    if (confirm(msg_setVerified)) {
+        $.blockUI({ message: '' }); 
+        $.ajax({
+            type: 'GET',
+            url:  'members.php?do=verification&job=set_verified&id='+uid,
+            success: function (response) {
+                setTimeout($.unblockUI, 1000);
+                ReloadTab('.uitabs');
+            }
+        });
+    }
+};
+
+
+
+function delDoc(cat_id){
+    if (confirm(msg)) {
+
+        $.blockUI({ message: '' }); 
+        $.ajax({
+            type: 'GET',
+            url:  'members.php?do=verification&job=del_doc&id='+cat_id,
+            success: function (response) {
+                setTimeout($.unblockUI, 1000);
+                ReloadTab('.uitabs');
+            }
+        });
+    }
+};
+
+
+
+    
+$(document).ready(function(){
+    if($(".egFieldTips").length && jQuery()) {
+
+        $(".egFieldTips").etooltip({ 
+            position: "center right",
+            effect: 'slide',
+            offset: [-2, 10],
+            opacity: 0.9
+        });
+    }
+    
+$("#Del"+thejob).validate({
+   		submitHandler: function(form) {
+   		  SubmitForm(form.id, form.action, '.uitabs');
+   }
+});
+
+
+$("#listVM"+thejob).validate({
+   		submitHandler: function(form) {
+   		  submitonTab(form.id, form.action, '.uitabs');
+   }
+    });
+
+    if($(".cboxElement").length && jQuery()) {
+        $(".cboxElement").colorbox({transition:"fade"});
+    }
+});
+    
+</script>
+{/literal}
+

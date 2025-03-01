@@ -1,0 +1,386 @@
+
+<div class="row">
+  <div class="col-lg-4 col-6"> 
+    <!-- small box -->
+    <div class="small-box bg-info">
+      <div class="inner">
+        <h3>{$cur}{$member.5|format_money}</h3>
+        <p>#_member_balances#</p>
+      </div>
+
+              <div class="icon">
+                <i class="fas fa-wallet"></i>
+              </div>
+      <a href="members.php?do=balance" class="small-box-footer">#_member_balances# <i class="fas fa-arrow-circle-right"></i></a></div>
+  </div>
+  <div class="col-lg-4 col-6"> 
+    <!-- small box -->
+    <div class="small-box bg-success">
+      <div class="inner">
+        <h3>{$cur}{$wd.1|format_money}</h3>
+        <p>#_pending_withdraw#</p>
+      </div>
+        
+              <div class="icon">
+           <i class="fas fa-file-invoice-dollar"></i>
+              </div>
+        
+
+      <a href="withdrawal.php?do=list&s=1" class="small-box-footer"> #_withdrawal# <i class="fas fa-arrow-circle-right"></i></a> </div>
+  </div>
+  <div class="col-lg-4 col-6"> 
+    <!-- small box -->
+    <div class="small-box bg-warning">
+      <div class="inner">
+        <h3>{$cur}{$wd.0|format_money}</h3>
+        <p>#_paidout#</p>
+      </div>
+              <div class="icon">
+          <i class="fas fa-funnel-dollar"></i>
+              </div>
+      <a href="withdrawal.php?do=list&s=2" class="small-box-footer"> #_paidout# <i class="fas fa-arrow-circle-right"></i></a> </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-4 col-6"> 
+    <!-- small box -->
+    <div class="small-box bg-purple">
+      <div class="inner">
+        <h3>{$member.4|format_money}</h3>
+        <p>#_members#</p>
+      </div>
+              <div class="icon">
+                <i class="fas fa-user"></i>
+              </div>
+        
+      <a href="members.php?do=list" class="small-box-footer">#_members# <i class="fas fa-arrow-circle-right"></i></a></div>
+  </div>
+  <div class="col-lg-4 col-6"> 
+    <!-- small box -->
+    <div class="small-box bg-gray">
+      <div class="inner">
+        <h3>{$downloads}</h3>
+        <p>#_downloads#</p>
+      </div>
+      <div class="icon">  <i class="fas fa-file-download"></i></div>
+        
+        
+       
+        
+      <a href="products.php?do=downloads" class="small-box-footer"> #_downloads# <i class="fas fa-arrow-circle-right"></i></a> </div>
+  </div>
+  <div class="col-lg-4 col-6"> 
+    <!-- small box -->
+    <div class="small-box bg-danger">
+      <div class="inner">
+        <h3>{$articles|format_money}</h3>
+        <p>#_str_article#</p>
+      </div>
+      <div class="icon"> <i class="far fa-newspaper"></i></div>
+      <a href="products.php?do=articles" class="small-box-footer"> #_str_article# <i class="fas fa-arrow-circle-right"></i></a> </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="card card-primary">
+      <div class="card-header">
+        <h3 class="card-title">#_stats_member#</h3>
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse"> <i class="fas fa-minus"></i></button>
+    
+        </div>
+      </div>
+      <!-- /.card-header -->
+      <div class="card-body p-0"> {$last_members = $egTpl->admin_last_members()}
+        {if $last_members}
+        <ul class="users-list ">
+          {foreach from=$last_members key=k item=v}
+          <li><img src="{$v.pic}" alt="{$v.name}"> <div><a href="user.php?id={$v.userid}">{$v.name}</a></div> <span class="users-list-date">{$v.joindate}</span> </li>
+          {/foreach}
+        </ul>
+        {/if} 
+        
+        <!-- /.users-list --></div>
+      <!-- /.card-body -->
+      <div class="card-footer text-center"> <a href="members.php?do=list"><i class="fas fa-search text-sm"></i> #_member_list#</a> </div>
+      <!-- /.card-footer --></div>
+  </div>
+  <div class="col-md-6">
+    <div class="card card-danger " style="height: 570px;">
+      <div class="card-header">
+        <h3 class="card-title">#_to_do#</h3>
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse"> <i class="fas fa-minus"></i></button>
+          
+        </div>
+      </div>
+      <!-- /.card-header -->
+      <div class="card-body card-overflow">
+        <div id="homeNotification"></div>
+          
+          
+{if $upcoming_events}
+          <div class="mt-3">
+     
+              <div class="border-bottom mb-3">#_admin_reminder#</div>
+   
+                 {foreach from=$upcoming_events key=k item=v}
+                  
+                <div class="external-event " {if $v.color}style="background-color:{$v.color}"{/if}>
+                <a href="admin.php?do=calendar&event={$v.event_id}" class="text-white"> {if $v.name}{$v.name}:{/if} {$v.event_title}</a></div>
+
+                {/foreach}
+              
+       
+</div>
+
+          {/if}
+          
+          
+          
+          
+        
+        <!-- /.users-list --></div>
+      <!-- /.card-body --> 
+       <div class="card-footer text-center"> <a href="admin.php?do=calendar"><i class="fas fa-search text-sm"></i> #_calendar#</a> </div>
+      <!-- /.card-footer --></div>
+  </div>
+</div>
+
+<div class="card card-info">
+  <div class="card-header">
+    <h5 class="card-title alert-dismissible">#_funds#</h5>
+    <div class="card-tools">
+      <button type="button" class="btn btn-tool" data-card-widget="collapse"> <i class="fas fa-minus"></i> </button>
+      
+    </div>
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body"> {literal} 
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart1);
+      function drawChart1() {
+      var jsonData = $.ajax({
+          url: "eg_ajax.php",
+          type: "POST",
+          data: "action=chart_funds",
+         
+          async: false
+          }).responseText;
+
+
+        var data = new google.visualization.DataTable(jsonData);
+        var options = { 
+        legend: {position: "top"},
+        hAxis: {title: "Dates"},
+        vAxis: {title: "Quantity", format:0},
+        chartArea: {left:80,top:40,width:"95%",height:"70%"}, 
+        seriesType: "bars",
+        series: {4: {type: "line"}}
+        };
+        var chart = new google.visualization.ComboChart(document.getElementById("chartcont1"));
+        chart.draw(data,options);
+      }
+  </script> 
+    {/literal}
+    <div id="chartcont1" style="width:100%;height:300px;">
+      <div style="padding-top:140px;text-align:center;"><img src="{$config.root_url}/assets/images/load.gif" /></div>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-success">
+  <div class="card-header">
+    <h5 class="card-title alert-dismissible">#_log_earning#</h5>
+    <div class="card-tools">
+      <button type="button" class="btn btn-tool" data-card-widget="collapse"> <i class="fas fa-minus"></i> </button>
+      
+    </div>
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body"> {literal} 
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart2);
+      function drawChart2() {
+      var jsonData = $.ajax({
+          url: "eg_ajax.php",
+          type: "POST",
+          data: "action=chart_earning",
+         
+          async: false
+          }).responseText;
+
+
+        var data = new google.visualization.DataTable(jsonData);
+        var options = { 
+        legend: {position: "top"},
+        hAxis: {title: "Dates"},
+        vAxis: {title: "Quantity", format:'0'},
+
+        chartArea: {left:80,top:40,width:"95%",height:"70%"}, 
+        colors: ["#008080","#0084DB"],
+        seriesType: "bars",
+        series: {2: {type: "line"}}
+        };
+        var chart = new google.visualization.ComboChart(document.getElementById("chartcont3"));
+        chart.draw(data,options);
+      }
+  </script> 
+    {/literal}
+    <div id="chartcont3" style="width:100%;height:300px;">
+      <div style="padding-top:140px;text-align:center;"><img src="{$config.root_url}/assets/images/load.gif" /></div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="card card-warning">
+  <div class="card-header">
+    <h5 class="card-title alert-dismissible">#_str_stats#</h5>
+    <div class="card-tools">
+      <button type="button" class="btn btn-tool" data-card-widget="collapse"> <i class="fas fa-minus"></i> </button>
+      
+    </div>
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body"> {literal} 
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart2);
+      function drawChart2() {
+      var jsonData = $.ajax({
+          url: "eg_ajax.php",
+          type: "POST",
+          data: "action=chart_stats",
+         
+          async: false
+          }).responseText;
+
+
+        var data = new google.visualization.DataTable(jsonData);
+        var options = { 
+        legend: {position: "top"},
+        hAxis: {title: "Dates"},
+        vAxis: {title: "Quantity", format:'0'},
+
+        chartArea: {left:80,top:40,width:"95%",height:"70%"}, 
+        colors: ["#008080","#0084DB"],
+        seriesType: "bars",
+        series: {2: {type: "line"}}
+        };
+        var chart = new google.visualization.ComboChart(document.getElementById("chartcont2"));
+        chart.draw(data,options);
+      }
+  </script> 
+    {/literal}
+    <div id="chartcont2" style="width:100%;height:300px;">
+      <div style="padding-top:140px;text-align:center;"><img src="{$config.root_url}/assets/images/load.gif" /></div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="card ">
+  <div class="card-header bg-olive">
+    <h5 class="card-title alert-dismissible">#_payment_last_7_days#</h5>
+    <div class="card-tools">
+      <button type="button" class="btn btn-tool" data-card-widget="collapse"> <i class="fas fa-minus"></i> </button>
+      
+    </div>
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body">
+    <div id="left_tableList">
+      <table class="table table-hover" width="100%">
+        <tbody>
+          <tr>
+            <td class="tablisthead"> #_date#</td>
+            <td class="tablisthead" align="center"> #_transaction#</td>
+            <td class="tablisthead"> #_amount# ({$cur})</td>
+            <td class="tablisthead">&nbsp;</td>
+          </tr>
+        {$payments}
+        
+        {if $payments}
+        <tr class="tablistbutton">
+          <td style="font-weight: bold"> #_total#</td>
+          <td style="font-weight: bold" align="center"> {$pt.1}</td>
+          <td style="font-weight: bold"> {$pt.2}</td>
+          <td style="font-weight: bold">&nbsp;</td>
+        </tr>
+        {/if}
+          </tbody>
+        
+      </table>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <div class="card card-warning">
+      <div class="card-header">
+        <h3 class="card-title">#_login_activity#</h3>
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse"> <i class="fas fa-minus"></i></button>
+       
+        </div>
+      </div>
+      <!-- /.card-header -->
+      <div class="card-body p-0"> {$recent_login = $egTpl->admin_recent_login()}
+        {if $recent_login}
+        <ul class="products-list product-list-in-card pl-2 pr-2 card-overflow">
+          {foreach from=$recent_login key=k item=v}
+          <li class="item">
+            <div> <i class="fa fa-xs fa-user-clock"></i> <span class="product-title">{$v.time|format_time}</span> <span class="product-description">{$v.activity|urldecode}</span> </div>
+          </li>
+          <!-- /.item --> 
+          
+          {/foreach}
+        </ul>
+        {/if} 
+        
+        <!-- /.users-list --></div>
+      <!-- /.card-body -->
+      <div class="card-footer text-center"> <a href="admin.php?do=logs"><i class="fas fa-search text-sm"></i> #_admin_log#</a> </div>
+      <!-- /.card-footer --></div>
+  </div>
+  <div class="col-md-6">
+    <div class="card card-success">
+      <div class="card-header">
+        <h3 class="card-title">#_news#</h3>
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse"> <i class="fas fa-minus"></i></button>
+    
+        </div>
+      </div>
+      <!-- /.card-header -->
+      <div class="card-body p-0"> {$recent_news = $egTpl->admin_recent_news()}
+        {if $recent_news}
+        <ul class="products-list product-list-in-card pl-2 pr-2 card-overflow">
+          {foreach from=$recent_news key=k item=v}
+          <li class="item">
+            <div> <i class="far fa-xs fa-calendar-times"></i> <span class="product-title">{egHtml::timeElapsed($v.date)}: {$v.short_subject}</span>
+              <p>{$v.short_body}</p>
+            </div>
+          </li>
+          <!-- /.item --> 
+          
+          {/foreach}
+        </ul>
+        {/if} 
+        
+        <!-- /.users-list --></div>
+      <!-- /.card-body -->
+      <div class="card-footer text-center"> <a href="management.php?do=news"><i class="fas fa-search text-sm"></i> #_view_all#</a> </div>
+      <!-- /.card-footer --></div>
+  </div>
+</div>

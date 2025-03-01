@@ -1,0 +1,23 @@
+
+<table class="tablist table table-hover" width="100%">
+  <tbody>
+    <tr>
+      <td class="tablisthead" align="center" width="100"># </td>
+      <td class="tablisthead" width="220">#_created_date#</td>  
+      <td class="tablisthead">#_account#</td>
+      <td class="tablisthead">#_email#</td>
+      <td class="tablisthead">#_mobile_phone#</td>
+      <td class="tablisthead">#_lastlogin#</td>
+      <td class="tablisthead">#_lastip#</td>
+      <td class="tablisthead">#_levelaccess#</td>
+      <td class="tablisthead" align="center"></td>
+    </tr>
+  {$content}
+  {if $pagenum}
+  <tr class="tablistbutton">
+    <td colspan="8"><div class="pagenum"> {$pagenum}</div></td>
+  </tr>
+  {/if}
+    </tbody>
+  
+</table>

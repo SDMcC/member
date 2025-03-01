@@ -1,0 +1,36 @@
+<form method="post" id="dataForm" action="">
+  <table border="0" class="config" width="100%">
+    <tbody>
+    <tr>
+      <td align="right" class="formsubject">#_postdate#:</td>
+      <td>&nbsp;{$testi.date|format_time}</td>
+    </tr>
+    <tr>
+      <td align="right" class="formsubject">#_str_member#:</td>
+      <td>&nbsp;<a href="user.php?id={$testi.userid}">{$testi.name_f} {$testi.name_l}: {$testi.loginid}</a>
+			</td>
+    </tr>
+    <tr>
+      <td align="right" class="formsubject">#_str_subject#:</td>
+      <td>&nbsp;<input type="text" name="subject" size="68" value="{$testi.subject}" style="width: 95%" class="required" /></td>
+    </tr>
+    <tr>
+      <td align="right" valign="top" class="formsubject">
+      #_str_message#:</td>
+      <td><b>&nbsp;<textarea rows="16" name="content" cols="65" style="width: 95%" class="required">{$testi.content}</textarea></b></td>
+    </tr>
+    <tr>
+      <td align="right" class="formsubject">#_str_enable#:</td>
+      <td><b>&nbsp;</b><select size="1" name="active">{$active}</select><b>
+      </b></td>
+    </tr>
+    <tr>
+      <td align="right" class="formsubject">&nbsp;</td>
+      <td>
+      <button type="submit" class="btn btn-primary"><i class="far fa-save"></i> #_button_save#</button><div class="buttonCancel">
+					<button type="button" class="btn btn-secondary buttonCancel" name="btncancel" onclick="history.back(-1)"><i class="fas fa-undo text-sm"></i> #_button_cancel#</button></div></td>
+    </tr>
+    </tbody>
+    </table>
+  <input type="hidden" name="id" value="{$testi.id}" />
+</form>

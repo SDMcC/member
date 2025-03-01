@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="{$lang_code}">
+<head>
+<meta charset="#_charset#">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>.: {$config.meta_title} Admin Control Panel - {$title|strip_tags} :.</title>
+<link rel="icon" type="image/png" href="../assets/images/favicon.png">
+
+<!-- Required CSS-->
+<link rel="stylesheet" href="../assets/js/adminlte/adminlte.min.css">
+<link rel="stylesheet" href="../assets/js/plugins/fontawesome-free/css/all.min.css">
+<script defer src="../assets/js/plugins/fontawesome-free/js/all.min.js"></script> <!--load all styles -->
+<link rel="stylesheet" href="../assets/js/plugins/fontawesome-free/css/solid.min.css">
+<script defer src="../assets/js/plugins/fontawesome-free/js/solid.min.js"></script> <!--load all styles -->
+<link rel="stylesheet" href="../assets/js/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+<link href="../assets/js/plugins/daterangepicker/daterangepicker.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="../assets/js/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
+<link href="../assets/themes/{$config.template_dir}/css/general.css" rel="stylesheet" type="text/css" />
+<link href="../assets/themes/{$config.template_dir}/css/egStyle.css" rel="stylesheet" type="text/css" />
+<link href="../assets/themes/{$config.template_dir}/css/admin.css" rel="stylesheet" type="text/css" />
+<link href="../assets/themes/{$config.template_dir}/css/custom.css" rel="stylesheet" type="text/css" />
+<link href="../assets/js/plugins/overlayScrollbars/css/OverlayScrollbars.min.css" rel="stylesheet" >
+<link href="../assets/themes/{$config.template_dir}/css/responsive.css" rel="stylesheet">
+    
+    <!-- Inputs --> 
+<link href="../assets/js/plugins/chosen/chosen.css" rel="stylesheet" > 
+<link href="../assets/js/plugins/tagify/tagify.css" rel="stylesheet" >
+    <!-- Inputs -->     
+    
+<!-- Scripts --> 
+<script src="../assets/js/plugins/jquery/jquery.min.js"></script> 
+<script src="../assets/languages/{$session_language}.js" type="text/javascript"></script> 
+<script src="../assets/js/tinymce/tinymce.min.js" type="text/javascript"></script> 
+<script type="text/javascript">
+var _toOffset = {$config.time_zone_offset};
+var _timeFormat = "{$config.date_format} %H:%M:%S";
+var _timeZone = "{$config.time_zone.timezone}";
+</script> 
+<script src="../assets/js/custom.js" type="text/javascript"></script>  
+<script src="../assets/js/admin.js" type="text/javascript"></script> 
+<script src="https://www.google.com/jsapi" type="text/javascript"></script> 
+<script src="https://www.gstatic.com/charts/loader.js" type="text/javascript"></script>
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed ">
+<div class="wrapper"> 
+  
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-dark">
+    <ul class="navbar-nav">
+      <li class="nav-item"> <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a> </li>
+      <li class="nav-item d-none d-sm-inline-block"> <a href="index.php" class="nav-link">#_admin_home#</a> </li>
+      <li class="nav-item d-none d-sm-inline-block"> <a href="contact.php" class="nav-link">#_contacts#</a> </li>
+      <li class="nav-item d-none d-sm-inline-block"> <a href="ticket.php" class="nav-link">#_ticket#</a> </li>
+      <li class="nav-item d-none d-sm-inline-block"> <a href="management.php?do=news" class="nav-link">#_news#</a> </li>
+    </ul>
+    <div id="adminNotification"> </div>
+    <ul class="navbar-nav ml-auto">
+      {$new_tikets = $egTpl->admin_new_tikets()} 
+      {if $new_tikets} {$count_tikets = count($new_tikets)} 
+      <!-- Messages Dropdown Menu -->
+      <li class="nav-item dropdown "> <a class="nav-link" data-toggle="dropdown" href="#"> <i class="far fa-envelope adm-nav-command"></i> <span class="badge badge-danger navbar-badge">{$count_tikets}</span> </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="left: inherit; right: 0px;"> {foreach from=$new_tikets key=k item=v} 
+          
+          <!-- Message Start --> 
+          <a href="ticket.php?do=view&id=&id={$v.ticket_id}" class="dropdown-item">
+          <div class="media">
+            <div class="media-body">
+              <p class="dropdown-item-title text-sm">{$v.subject} </p>
+              <p class="text-sm text-muted"><i class="far fa-user text-sm"></i> {$v.name} <i class="far fa-clock"></i> {egHtml::timeElapsed($v.lastmessage)}</p>
+            </div>
+          </div>
+          </a> 
+          <!-- Message End -->
+          
+          <div class="dropdown-divider"> </div>
+          {/foreach}
+          <div class="dropdown-divider"> </div>
+          <a href="ticket.php" class="dropdown-item dropdown-footer">#_see_all_message#</a> </div>
+      </li>
+      {/if} 
+      
+      <!-- Notifications Dropdown Menu -->
+      <li class="nav-item dropdown"> <a class="nav-link" data-toggle="dropdown" href="#"> <i class="far fa-bell adm-nav-command"></i> <span class="badge badge-warning navbar-badge" id="topbar-notifications-amt">0</span> </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right text-sm" id="topbar-notifications"> </div>
+      </li>
+        
+        
+      <!-- Reminder Dropdown Menu -->
+      <li class="nav-item dropdown"> <a class="nav-link" data-toggle="dropdown" href="#"> <i class="far fa-calendar-alt"></i> <span class="badge badge-info navbar-badge" id="topbar-events-amt">0</span> </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right text-sm" id="topbar-events"> </div>
+      </li>
+        
+        
+        
+      <li class="nav-item"> <a class="nav-link" data-widget="fullscreen" href="#" role="button"> <i class="fas fa-expand-arrows-alt adm-nav-command"></i> </a> </li>
+      <!--      <li class="nav-item"> <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button"> <i class="fas fa-th-large adm-nav-command"></i> </a> </li>-->
+    </ul>
+  </nav>
+  <!-- /.navbar --> 
+  
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4"> 
+    
+    <!-- Company Logo --> 
+    <a class="brand-link" href="{$config.root_url}"><img class="brand-image " src="{if $config.company_logo}{$config.company_logo|upload_img_url}{else}{$config.root_url}/assets/images/logo.png{/if}" alt="{$config.program_name}" title="{$config.program_name}"/></a> 
+    
+    <!-- Sidebar -->
+    <div class="sidebar"> 
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class=" text-white">
+          <p class="text-sm" ><div id="showclock">{{egLocal::today_name()}}, <span id="egLocalTime" class="text-xs"></span></div></p>
+          <a href="admin.php?do=profile" class="d-block">#_str_hello#  {$admin_name}!</a>
+          <p class="text-sm "> #_lastlogin#:<br>
+            {egHtml::timeElapsed($admin_data.last_login)} | {$admin_data.lastip} {egLocal::get_ip_flag($admin_data.lastip)}</p>
+          <p class="text-center"> <a class="topuser_logs.phpout" href="admin.php?do=logout" onclick="return confirm('#_str_confirm#');">#_str_logout#</a> </p>
+        </div>
+      </div>
+      
+      <!-- SidebarSearch Form -->
+      <form method="post" action="members.php?do=list">
+        <div class="form-inline">
+          <div class="input-group">
+            <input class="form-control form-control-sidebar" name="q" value="{$q}" type="text" autocomplete="off" placeholder="#_search_user#">
+            <div class="input-group-append">
+              <button type="submit" class="btn btn-sidebar"> <i class="fas fa-search fa-fw"></i> </button>
+            </div>
+          </div>
+        </div>
+      </form>
+      
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column " data-widget="treeview" role="menu" data-accordion="false">
+          {egAdmin::admin_sidebar_menus()}
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu --> 
+    </div>
+    <!-- /.sidebar --> 
+  </aside>
+  
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper"> 
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <div class="adminTitle">
+              <h5 class="m-0"><span id="mainLink">{$title}</span></h5>
+            </div>
+          </div>
+          <!-- /.col -->
+          <div class="col-sm-6 text-right"> <span id="bookMark"><a href="#" class="bookMark">#_add_quick_menu#</a></span> </div>
+          <!-- /.col --> 
+        </div>
+        <!-- /.row --> 
+      </div>
+      <!-- /.container-fluid --> 
+    </div>
+    <!-- /.content-header --> 
+    
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid table-responsive">
+        <div class="admcontentbox"> {if !$admin_home and $page_sub_menus}
+          <div class="adminsubmenus"> {foreach from=$page_sub_menus key=k item=v} <a class="btn btn-app {if $v.bg}{$v.bg}{else}bg-primary{/if} " href="{$v.url}"> {if $v.fa}<i class="{$v.fa}"></i>{else}<i class="far fa-file-alt"></i> {/if}{$v.title} </a> {/foreach} </div>
+          {/if}
+          <div class="admincontent"> {include file=$BODY} </div>
+        </div>
+      </div>
+      <!--/. container-fluid --> 
+    </section>
+    <!-- /.content --> 
+  </div>
+  <!-- /.content-wrapper --> 
+  
+  <!--
+{if $page_sub_menus}
+<aside class="control-sidebar control-sidebar-dark ">
+  <ul class="control-sidebar-menu">
+   {foreach from=$page_sub_menus key=k item=v} 
+<li><a href="{$v.url}">{$v.title}</a></li> 
+            {/foreach}
+  </ul>
+</aside>
+{/if}
+--> 
+  
+  {if $admin_bookmarks} 
+  <!-- quickMenus -->
+  <div id="quickMenus">
+    <h5>#_admin_bookmarks#</h5>
+    <div class="list-group"> {foreach from=$admin_bookmarks key=k item=v} <a href="{$v.url}" class="list-group-item">{$v.text}</a> {/foreach} </div>
+  </div>
+  <!--/ quickMenus --> 
+  {/if} 
+  
+  <!-- Main Footer -->
+  <footer class="main-footer bg-dark" > 
+    <!-- copyrightWrapper-->
+    
+    <div class="row">
+      <div class="col-md-6 ">
+        <div> {$copyright_notice} </div>
+        <p> #_powered_notice# </p>
+      </div>
+      <div class="col-md-6 text-right"> 
+        
+        <!--  Quick access-->
+        <div class="quick-access"> 
+          <div><a href="{$config.root_url}/index.php">#_frontpage#</a> / <a href="{$config.root_url}/members.php">#_str_go_member#</a></div>
+          <p><a href="{$config.root_url}/index.php?pa=privacy-policy">#_str_privacy#</a> / <a href="{$config.root_url}/index.php?pa=terms">#_str_terms#</a></p>
+        </div>
+        <!--  Quick access--> 
+        
+      </div>
+    </div>
+  </footer>
+</div>
+<!-- ./wrapper --> 
+
+<!-- Required scripts --> 
+<script src="../assets/js/jquery.cycle.all.js" type="text/javascript"></script> 
+<script src="../assets/js/BootSideMenu.js" type="text/javascript"></script> 
+<script src="../assets/js/plugins/bootstrap/js/bootstrap.bundle.min.js"></script> 
+<script src="../assets/js/adminlte/adminlte.min.js" type="text/javascript"></script> 
+<script src="../assets/js/plugins/moment/moment.min.js"></script> 
+<script src="../assets/js/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script> 
+<script src="../assets/js/plugins/jquery-ui/jquery-ui.min.js"></script> 
+<script src="../assets/js/plugins/sweetalert2/sweetalert2.min.js"></script> 
+<script src="../assets/js/plugins/daterangepicker/daterangepicker.js"></script> 
+<script src="../assets/js/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script> 
+<script src="../assets/js/plugins/jquery-validation/jquery.validate.min.js"></script> 
+{if $language == 'indonesia'}
+<script src="../assets/js/plugins/jquery-validation/localization/messages_id.js"></script> 
+{/if}
+    
+   <!-- Inputs --> 
+<script src="../assets/js/plugins/chosen/chosen.jquery.js"></script>   
+<script src="../assets/js/plugins/tagify/jQuery.tagify.min.js"></script>  
+    
+<script src="../assets/js/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script> 
+<script src="../assets/js/plugins/fullcalendar/dist/index.global.min.js"></script>    
+<script src="../assets/js/starter.js" type="text/javascript"></script> 
+<script type="text/javascript">
+
+$(document).ready(function(){
+    
+     
+{if $msg} 
+    swal.fire({
+        icon: 'error',
+        title: '{$msg}'
+    })  
+{/if}
+                                                   
+    
+{if $smarty.session.postSaved}
+      swal.fire({
+        icon: 'success',
+        title: '#_str_post_saved#'
+      })
+      			
+     {/if}
+      
+{if $smarty.session.postSaved}
+swal("#_str_post_saved#");
+{/if}
+      
+});
+
+  </script> 
+{if $config.tawk_enable AND $config.tawk_code} 
+<!-- Tawk.to live chat --> 
+{$config.tawk_code|eg_get_html} 
+<!--End Tawk.to live chat --> 
+{/if}
+</body>
+</html>

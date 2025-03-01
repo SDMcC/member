@@ -1,0 +1,27 @@
+<form method="post" action="">
+	<div class="divLeft">
+		#_start_date#:
+		<b>{$report_start}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </b>#_end_date#: <b>{$report_end}</b> </div>
+	<div class="right">
+					#_show_report#: <select name="report" size="1" onchange="this.form.submit()">{$report_option}
+			</select> </div>
+	<input type="hidden" name="end_date" value="{$end_date}" />
+	<input type="hidden" name="start_date" value="{$start_date}" />
+	<input type="hidden" name="discretion" value="{$discretion}" />
+</form>
+<table class="tablist table table-hover" width="100%">
+	<tr>
+		<td class="tablisthead">#_date#</td>
+		<td class="tablisthead">#_transaction#</td>
+		<td class="tablisthead">#_amount#</td>
+		{if $tax_enable}<td class="tablisthead">#_str_tax#</td>
+		{/if} <td class="tablisthead">#_percent_graph#</td>
+	</tr>
+	{$content} <tr class="tablistbutton">
+		<td style="font-weight: bold">#_total#</td>
+		<td style="font-weight: bold">{$total.1}</td>
+		<td style="font-weight: bold">{$total.2}</td>
+		{if $tax_enable}<td style="font-weight: bold">{$total.3}</td>
+		{/if} <td style="font-weight: bold">&nbsp;</td>
+	</tr>
+</table>
